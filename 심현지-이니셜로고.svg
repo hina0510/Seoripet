@@ -1,0 +1,112 @@
+<svg viewBox="-40 -40 231 221" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" overflow="visible"
+  style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:400px; height:400px;">
+
+  <style>
+    .p {
+      fill: none;
+      stroke: #2F2F2F;
+      stroke-width: 10;
+      stroke-linecap: round;
+      visibility: hidden;
+    }
+
+    #hr {
+      stroke-width: 7;
+    }
+
+    #el { stroke-dasharray: 60;   stroke-dashoffset: 60;   animation: show 0s forwards 0.3s,  draw 0.35s ease forwards 0.3s; }
+    #er { stroke-dasharray: 60;   stroke-dashoffset: 60;   animation: show 0s forwards 0.8s,  draw 0.35s ease forwards 0.8s; }
+    #mo { stroke-dasharray: 80;   stroke-dashoffset: 80;   animation: show 0s forwards 1.3s,  draw 0.4s  ease forwards 1.3s; }
+    #sm { stroke-dasharray: 120;  stroke-dashoffset: 120;  animation: show 0s forwards 1.9s,  draw 0.45s ease forwards 1.9s; }
+    #dt { stroke-dasharray: 60;   stroke-dashoffset: 60;   animation: show 0s forwards 2.45s, draw 0.3s  ease forwards 2.45s; }
+    #hr { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: show 0s forwards 2.9s,  draw-hair 0.85s ease forwards 2.9s; }
+
+    @keyframes show      { to { visibility: visible; } }
+    @keyframes draw      { to { stroke-dashoffset: 0; } }
+    @keyframes draw-hair { from { stroke-dashoffset: 1200; } to { stroke-dashoffset: 0; } }
+  </style>
+
+  <!-- 왼눈 -->
+  <path id="el" class="p" d="M60.6316 149.133C59.4008 152.385 56.0777 160.738 52.6316 168.133"/>
+  <!-- 오른눈 -->
+  <path id="er" class="p" d="M123.632 149.133C122.401 152.385 119.078 160.738 115.632 168.133"/>
+  <!-- 코 -->
+  <path id="mo" class="p" d="M75.0789 163.08C78.0945 161.173 86.7796 158.505 97.3946 163.08"/>
+  <!-- 미소 -->
+  <path id="sm" class="p" d="M47.8684 194.291C59.4581 205.807 89.8309 222.414 118.605 196.715"/>
+  <!-- 입꼬리 -->
+  <path id="dt" class="p" d="M112.632 188.369C120.5 188.369 127.932 194.969 129.632 199.369"/>
+  <!-- 머리카락 -->
+  <path id="hr" class="p" d="M15.019 46.2552C3.0266 64.522 -9.92523 104.013 34.2069 115.844C89.3722 130.633 92.9699 -1.73727 149.934 3.66188C206.898 9.06103 227.285 88.2485 156.53 123.043C85.7744 157.838 109.759 58.8532 149.934 66.6519C190.109 74.4507 227.277 105.287 191.904 170.856C156.53 236.425 228.301 221.905 227.493 186.572"/>
+
+  <script type="text/javascript"><![CDATA[
+    const HAIR_ORIGIN =
+      "M15.019 46.2552C3.0266 64.522 -9.92523 104.013 34.2069 115.844" +
+      "C89.3722 130.633 92.9699 -1.73727 149.934 3.66188" +
+      "C206.898 9.06103 227.285 88.2485 156.53 123.043" +
+      "C85.7744 157.838 109.759 58.8532 149.934 66.6519" +
+      "C190.109 74.4507 227.277 105.287 191.904 170.856" +
+      "C156.53 236.425 228.301 221.905 227.493 186.572";
+
+    function buildPath(dx, dy) {
+      var mx   = 15.019  + dx;
+      var my   = 46.2552 + dy;
+      var cp1x = 3.0266  + dx * 0.7;
+      var cp1y = 64.522  + dy * 0.7;
+      return (
+        "M" + mx + " " + my +
+        "C" + cp1x + " " + cp1y + " -9.92523 104.013 34.2069 115.844" +
+        "C89.3722 130.633 92.9699 -1.73727 149.934 3.66188" +
+        "C206.898 9.06103 227.285 88.2485 156.53 123.043" +
+        "C85.7744 157.838 109.759 58.8532 149.934 66.6519" +
+        "C190.109 74.4507 227.277 105.287 191.904 170.856" +
+        "C156.53 236.425 228.301 221.905 227.493 186.572"
+      );
+    }
+
+    var hr = document.getElementById('hr');
+
+    function startSnap() {
+      var keyframes = [
+        { t: 0,    dx: 0,   dy: 0   },
+        { t: 0.45, dx: -28, dy: -20 },
+        { t: 0.62, dx: 12,  dy: 8   },
+        { t: 0.76, dx: -5,  dy: -4  },
+        { t: 0.87, dx: 2,   dy: 2   },
+        { t: 0.94, dx: -1,  dy: -1  },
+        { t: 1.0,  dx: 0,   dy: 0   }
+      ];
+
+      var totalDuration = 1300;
+      var startTime = performance.now();
+
+      function lerp(a, b, t) { return a + (b - a) * t; }
+      function easeInOut(t)  { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+      function tick(now) {
+        var progress = Math.min((now - startTime) / totalDuration, 1);
+        var dx = 0, dy = 0;
+        for (var i = 0; i < keyframes.length - 1; i++) {
+          var k0 = keyframes[i], k1 = keyframes[i + 1];
+          if (progress >= k0.t && progress <= k1.t) {
+            var e = easeInOut((progress - k0.t) / (k1.t - k0.t));
+            dx = lerp(k0.dx, k1.dx, e);
+            dy = lerp(k0.dy, k1.dy, e);
+            break;
+          }
+        }
+        hr.setAttribute('d', buildPath(dx, dy));
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          hr.setAttribute('d', HAIR_ORIGIN);
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // 머리카락 그리기 완료(2.9s + 0.85s = 3.75s) 후 튕김 실행
+    setTimeout(startSnap, 3750);
+  ]]></script>
+
+</svg>

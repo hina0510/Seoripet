@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEORIPET</title>
+  <!-- <link rel="shortcut icon" href="image/favicon.png"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="goto-top">
+    <a href="#"><i class="fa-solid fa-angle-up"></i></a>
+  </div>
+  <div class="goto-bottom">
+    <a href="#footer"><i class="fa-solid fa-angle-down"></i></a>
+  </div>
+
+  <!-- <header data-include="header.html">
+  </header> -->
+  <header></header>
+  <section id="s1">
+    <div class="banner-track">
+      <div class="banner-slide"><!-- 이미지 변경 및 추가 -->
+        <img src="image/banner1.png" alt="banner1">
+      </div>
+
+      <div class="banner-slide">
+        <img src="image/banner2.png" alt="banner2">
+      </div>
+
+      <div class="banner-slide">
+        <img src="image/banner3.png" alt="banner3">
+      </div>
+    </div>
+
+    <div class="banner-indicator"><!-- 이미지 추가 시 버튼 추가 -->
+      <button class="active" data-index="0"></button>
+      <button data-index="1"></button>
+      <button data-index="2"></button>
+    </div>
+  </section>
+  <section id="s2">
+    <div class="section-inner">
+      <div class="video-wrap"><!-- 영상 링크 추가 -->
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="youtube video" frameborder="0" allowfullscreen> </iframe>
+      </div>
+    </div>
+  </section>
+  <section id="s3">
+    <div class="campaign-wrap">
+      <div class="campaign-img">
+        <img src="image/donate_cure1.jpg" alt="">
+      </div>
+      <div class="campaign-info">
+        <h2>예방접종 지원 캠페인</h2>
+        <p>
+          보호 중인 유기동물의 건강한 입양을 위해<br>
+          필수 예방접종을 지원합니다.
+        </p>
+        <div class="progress-group">
+          <div class="progress-item">
+            <span>목표금액</span>
+            <div class="progress-bar">
+              <div class="fill" data-width="88"></div>
+            </div>
+            <strong>7,500,000</strong>
+          </div>
+          <div class="progress-item">
+            <span>달성금액</span>
+            <div class="progress-bar">
+              <div class="fill" data-width="100"></div>
+            </div>
+            <strong>8,270,000</strong>
+          </div>
+          <div class="progress-item">
+            <span>달성률</span>
+            <div class="progress-bar">
+              <div class="fill" data-width="100"></div>
+            </div>
+            <strong>110%</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section id="s4">
+    <div class="section-inner">
+      <div class="pet-tabs">
+        <button class="tab-btn active" data-pet="dog">강아지</button>
+        <button class="tab-btn" data-pet="cat">고양이</button>
+      </div>
+
+      <div class="pet-marquee active" id="dog">
+        <div class="pet-track">
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/dog1.jpg" alt="강아지">
+            </div>
+            <h3>몽이</h3>
+            <p>사람을 좋아하는 밝고 순한 아이입니다.</p>
+          </div>
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/dog2.jpg" alt="강아지">
+            </div>
+            <h3>초코</h3>
+            <p>산책을 좋아하고 애교가 많은 아이입니다.</p>
+          </div>
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/dog3.jpg" alt="강아지">
+            </div>
+            <h3>두부</h3>
+            <p>조용하고 차분한 성격을 가진 아이입니다.</p>
+          </div>
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/dog4.jpg" alt="강아지">
+            </div>
+            <h3>하루</h3>
+            <p>호기심이 많고 사람 곁을 좋아합니다.</p>
+          </div>
+          <!-- 무한루프용 복제 -->
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/dog1.jpg" alt="강아지">
+            </div>
+            <h3>몽이</h3>
+            <p>사람을 좋아하는 밝고 순한 아이입니다.</p>
+          </div>
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/dog2.jpg" alt="강아지">
+            </div>
+            <h3>초코</h3>
+            <p>산책을 좋아하고 애교가 많은 아이입니다.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pet-marquee" id="cat">
+        <div class="pet-track">
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/cat1.jpg" alt="고양이">
+            </div>
+            <h3>나비</h3>
+            <p>낯은 조금 가리지만 금방 마음을 엽니다.</p>
+          </div>
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/cat2.jpg" alt="고양이">
+            </div>
+            <h3>루루</h3>
+            <p>창가에서 쉬는 걸 좋아하는 조용한 아이입니다.</p>
+          </div>
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/cat3.jpg" alt="고양이">
+            </div>
+            <h3>미미</h3>
+            <p>장난감 반응이 좋고 활발한 성격입니다.</p>
+          </div>
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/cat4.jpg" alt="고양이">
+            </div>
+            <h3>코코</h3>
+            <p>품에 안기는 것을 좋아하는 다정한 아이입니다.</p>
+          </div>
+          <!-- 무한루프용 복제 -->
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/cat1.jpg" alt="고양이">
+            </div>
+            <h3>나비</h3>
+            <p>낯은 조금 가리지만 금방 마음을 엽니다.</p>
+          </div>
+          <div class="pet-card">
+            <div class="img-box">
+              <img src="./image/cat2.jpg" alt="고양이">
+            </div>
+            <h3>루루</h3>
+            <p>창가에서 쉬는 걸 좋아하는 조용한 아이입니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="s5">
+    <div class="bottom-inner">
+      <button class="reserve-btn" id="openModal">방문예약신청폼</button>
+
+      <div class="review-slider">
+        <div class="review-track">
+          <div class="review-card">
+            <img src="./image/review1.png" alt="리뷰 이미지">
+            <div class="review-text">
+              <div class="review-top">
+                <h3>김서연 <span>(27세)</span></h3>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>퇴근 후 집에 돌아오면 반갑게 맞아주는 아이 덕분에 행복합니다. 입양 후에도 도움을 받을 수 있어 믿음이 갔습니다.</p>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <img src="./image/review2.png" alt="리뷰 이미지">
+            <div class="review-text">
+              <div class="review-top">
+                <h3>이하늘 <span>(31세)</span></h3>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>처음 입양이라 걱정이 많았지만 상담이 친절해서 안심할 수 있었습니다. 지금은 가족 모두에게 소중한 존재가 되었어요.</p>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <img src="./image/review3.png" alt="리뷰 이미지">
+            <div class="review-text">
+              <div class="review-top">
+                <h3>박민지 <span>(29세)</span></h3>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>아이의 성격과 생활 습관을 자세히 안내받아 적응이 쉬웠습니다. 입양을 고민하는 분들께 꼭 추천하고 싶어요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal" id="reserveModal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal">×</button>
+      <h2>방문예약 신청</h2>
+      <p>방문을 원하시는 날짜와 정보를 입력해 주세요.</p>
+
+      <form>
+        <input type="text" placeholder="이름">
+        <input type="tel" placeholder="연락처">
+        <input type="date">
+        <button type="submit">신청하기</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="./image/footer-logo.png" alt="SEORIPET">
+      </div>
+
+      <div class="footer-info">
+        <p>상호명 : 서울강아지분양 고양이분양 서리펫 ㅣ 대표자 : 김주석</p>
+        <p>주소 : 서울특별시 서초구 신반포로43길 23-4, 1층(잠원동, 대산빌딩)</p>
+        <p>사업자등록번호 : 582-05-03353</p>
+        <p>동물판매허가번호 : 3210000-045-2025-0001</p>
+        <br>
+        <p>대표번호 : 1866-2441</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- <footer data-include="footer.html" id="footer">
+  </footer> -->
+	<script src="js/includeHTML.js"></script>
+	<script src="js/includeRouter.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+  includeHTML(() => {
+    initAll();
+    includeRouter(() => {
+      initAll();
+    });
+  });
+</script>
+</body>
+</html>
