@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>후원</title>
-  <!-- <link rel="shortcut icon" href="image/favicon.png"> -->
+  <link rel="shortcut icon" href="image/seoripet_logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -16,8 +16,7 @@
     <a href="#footer"><i class="fa-solid fa-angle-down"></i></a>
   </div>
 
-  <!-- <header data-include="header.html">
-  </header> -->
+  <header data-include="header.html"></header>
 
   <main id="sub-main">
     <div class="sub-inner">
@@ -219,12 +218,13 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><!-- Supabase CDN -->
 	<script src="js/includeHTML.js"></script>
 	<script src="js/includeRouter.js"></script>
-	<script src="./js/sub.js"></script>
+	<script src="js/sub.js"></script>
 	<script>
-  includeHTML(() => {
-    initAll();
+    includeHTML(() => {
+    mobileMenu();
+
     includeRouter(() => {
-      initAll();
+      mobileMenu();
     });
   });
 </script>
