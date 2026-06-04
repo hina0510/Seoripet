@@ -102,24 +102,24 @@ ul, li{
   margin:36px 0;
 }
 
-.progress-info{
+.donation-progress-info{
   display:flex;
   justify-content:space-between;
   align-items:end;
   margin-bottom:14px;
 }
 
-.progress-info strong{
+.donation-progress-info strong{
   color:#1F2A44;
   font-size:28px;
 }
 
-.progress-info span{
+.donation-progress-info span{
   color:#777;
   font-size:15px;
 }
 
-.progress-bar{
+.donation-progress-bar{
   width:100%;
   height:12px;
   overflow:hidden;
@@ -127,14 +127,14 @@ ul, li{
   background:#EAF4FD;
 }
 
-.progress-bar span{
+.donation-progress-bar span{
   display:block;
   height:100%;
   border-radius:999px;
   background:#90BEEA;
 }
 
-.progress-percent{
+.donation-progress-percent{
   margin-top:12px;
   color:#4B86C5 !important;
   font-size:16px !important;
