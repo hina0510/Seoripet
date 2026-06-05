@@ -1,3 +1,21 @@
+//side tab
+function setSubMenuActive() {
+  const currentPage = window.location.pathname.split("/").pop();
+  const subBtns = document.querySelectorAll(".sub-btn");
+
+  subBtns.forEach(function (btn) {
+    btn.classList.remove("active");
+
+    const href = btn.getAttribute("href");
+
+    if (href === currentPage) {
+      btn.classList.add("active");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", setSubMenuActive);
+
 /* About us */
 
 /* Visit us */
