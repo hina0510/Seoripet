@@ -23,6 +23,16 @@ ul, li{
 /* Visit us */
 
 /* Adopt-dog */
+.adopt-main-banner{
+  display:flex;
+  justify-content:center;
+}
+
+.adopt-main-banner img{
+  width:100%;
+  display:block;
+}
+
 #adopt-dog-content{
   width: 100%;
   max-width: 1400px;
