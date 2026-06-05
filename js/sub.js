@@ -1,4 +1,29 @@
 /* About us */
+/* ==============================
+about-us 스크롤업
+============================== */
+document.addEventListener("DOMContentLoaded", function () {
+  const scrollFadeItems = document.querySelectorAll(".scroll-fade");
+
+  if (scrollFadeItems.length > 0) {
+    const cabinetObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.25,
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    scrollFadeItems.forEach(function (item) {
+      cabinetObserver.observe(item);
+    });
+  }
+});
+
 
 /* Visit us */
 
