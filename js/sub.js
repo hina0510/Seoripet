@@ -21,7 +21,23 @@ document.addEventListener("DOMContentLoaded", setSubMenuActive);
 /* Visit us */
 
 /* Adopt-dog */
+const tabBtns = document.querySelectorAll('.adopt-tab-btn');
+const petContents = document.querySelectorAll('.adopt-pet');
 
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.pet;
+
+    tabBtns.forEach(btn => btn.classList.remove('active'));
+    btn.classList.add('active');
+
+    petContents.forEach(content => {
+      content.classList.remove('active');
+    });
+
+    document.getElementById(target).classList.add('active');
+  });
+});
 /* Adopt-cat */
 
 /* Donate-info */document.addEventListener("DOMContentLoaded", function () {

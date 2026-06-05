@@ -1,13 +1,16 @@
 :root{
   --bg: #F8F6F0;
   --primary: #90BEEA;
-  --primary-light: #EAF4FD;
-  --primary-dark: #4B86C5;
+  --secondary: #EAF4FD;
+  
+  --beige:#F6F1E6;
+  --blue: #4B86C5;
 
   --mint: #81C7B1;
   --navy: #1F2A44;
-  --beige:#F6F1E6;
-  --text: #2D3A36;
+  --light-green:#D3ED8C;
+  --dark-green:#364B44;
+  --text: #333;
   --sub-text: #7B7B7B;
 
   --line: #D9D0C5;
@@ -22,12 +25,6 @@ body{
   background: var(--bg);
 }
 
-/*
-#D3ED8C
-#81C7B1
-#364B44
-#90BEEA
- */
 
 .goto-top{
   position: fixed;
@@ -38,7 +35,7 @@ body{
   border: 3px solid #333;
   color: #333;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: var(--white);
   z-index: 1;
 }
 .goto-bottom{
@@ -50,7 +47,7 @@ body{
   border: 3px solid #333;
   color: #333;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: var(--white);
   z-index: 1;
 }
 .goto-bottom i{
@@ -132,9 +129,9 @@ body{
 
 /* hover */
 .sub-btn:hover:not(.active){
-  background: var(--primary-light);
+  background: var(--secondary);
   border-color: var(--primary);
-  color: var(--primary-dark);
+  color: var(--blue);
 }
 
 /* right content */
@@ -159,7 +156,7 @@ body{
 }
 
 .breadcrumb a:hover{
-  color: var(--primary-dark);
+  color: var(--blue);
 }
 
 .breadcrumb span{
@@ -167,7 +164,7 @@ body{
 }
 
 .breadcrumb strong{
-  color: var(--primary-dark);
+  color: var(--blue);
   font-weight: 600;
 }
 
