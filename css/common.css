@@ -4,6 +4,7 @@
   --primary-light: #EAF4FD;
   --primary-dark: #4B86C5;
 
+  --mint: #81C7B1;
   --navy: #1F2A44;
   --beige:#F6F1E6;
   --text: #2D3A36;
@@ -134,7 +135,6 @@ body{
   background: var(--primary-light);
   border-color: var(--primary);
   color: var(--primary-dark);
-  transform: translateX(6px);
 }
 
 /* right content */
