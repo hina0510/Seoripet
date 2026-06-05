@@ -199,9 +199,7 @@ body{
   }
 
   .sub-menu{
-    width: 100%;
-    padding: 26px 20px;
-    border-radius: 22px;
+    display: none;
   }
 
   .sub-menu h2{

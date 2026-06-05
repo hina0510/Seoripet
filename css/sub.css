@@ -648,22 +648,6 @@ ul, li{
   font-size:13px;
 }
 
-.chart-line{
-  position:absolute;
-  left:35px;
-  bottom:78px;
-  width:82%;
-  height:3px;
-  background:linear-gradient(90deg,var(--primary),#1680E5);
-  border-radius:999px;
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:1.2s ease .2s;
-}
-
-.chart-wrap.active .chart-line{
-  transform:scaleX(1);
-}
 
 /* message */
 .report-message{
@@ -718,13 +702,25 @@ ul, li{
 
   .report-summary{
     grid-template-columns:repeat(2,1fr);
-    gap:24px;
+    padding: 15px;
+    gap: 10px;
   }
 
   .report-summary div{
     border-right:0;
   }
+  .report-summary div strong{
+    font-size: 16px;
+  }
 
+  .donut-chart {
+    width: 200px;
+    aspect-ratio: 1/1;
+  }
+
+  .donut-text strong{
+    font-size: 14px;
+  }
   .use-inner{
     grid-template-columns:1fr;
   }

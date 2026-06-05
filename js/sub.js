@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
   progressBars.forEach(function (bar) {
     bar.style.setProperty("--w", bar.dataset.width);
   });
-
+  
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {

@@ -226,7 +226,7 @@
   color:#4B86C5;
 }
 
-@media(max-width:900px){
+@media screen and (max-width: 1024px){
   #header{
     height:76px;
   }
@@ -241,5 +241,23 @@
 
   .logo a{
     font-size:24px;
+  }
+}
+@media screen and (max-width: 768px){
+  #header{
+    height:76px;
+  }
+
+  .pc-nav{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .logo img{
+    width: 80px;
+    height: 50px;
   }
 }
