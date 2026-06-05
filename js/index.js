@@ -88,7 +88,6 @@ if (banner && track && dots.length > 0) {
 }
 
 //Scroll Animation
-// Scroll Animation
 const s3 = document.querySelector("#s3");
 const fills = document.querySelectorAll(".fill");
 
@@ -108,7 +107,7 @@ if (s3 && fills.length > 0) {
   observer.observe(s3);
 }
 
-//Review
+//card
 const tabBtns = document.querySelectorAll(".tab-btn");
 const petMarquees = document.querySelectorAll(".pet-marquee");
 const petTracks = document.querySelectorAll(".pet-track");
@@ -135,6 +134,15 @@ if (tabBtns.length > 0 && petMarquees.length > 0 && petTracks.length > 0) {
     });
   });
 }
+//Review
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.querySelector('.review-track');
+  const cards = Array.from(track.querySelectorAll('.review-card'));
+
+  cards.forEach(card => {
+    track.appendChild(card.cloneNode(true));
+  });
+});
 
 // Modal
 const openModal = document.querySelector("#openModal");

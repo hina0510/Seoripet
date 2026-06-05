@@ -33,7 +33,7 @@
 .banner-indicator button {
   width: 12px;
   height: 12px;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   border-radius: 50%;
   background: transparent;
   cursor: pointer;
@@ -42,7 +42,7 @@
 .banner-indicator button.active {
   width: 40px;
   border-radius: 30px;
-  background: #fff;
+  background: var(--white);
 }
 /* Video */
 #s2{
@@ -64,9 +64,28 @@
 }
 /* Scroll Animation */
 #s3{
+  position: relative;
   width:100%;
-  padding:150px 0;
-  background:#f3f3f3;
+  padding:140px 0;
+  background:url(../image/donate_cure1.png) no-repeat right center;
+  overflow:hidden;
+}
+
+#s3::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+
+  background:
+  linear-gradient(
+    90deg,
+    var(--white) 0%,
+    var(--white) 45%,
+    rgba(255,255,255,.95) 55%,
+    rgba(255,255,255,.6) 65%,
+    rgba(255,255,255,0) 80%
+  );
 }
 .campaign-wrap{
   width:90%;
@@ -75,43 +94,49 @@
   display:flex;
   align-items:center;
   gap:80px;
+  z-index:2;
 }
-.campaign-img{
-  width:40%;
-  border-radius: 30px;
-  overflow: hidden;
-}
-.campaign-img img{
-  width:100%;
-  aspect-ratio: 45/58;
-  display:block;
-}
+
 .campaign-info{
   flex:1;
+  z-index:2;
 }
 .campaign-info h2{
+  font-family: 'GMarketSans';
   font-size:60px;
-  margin-bottom:30px;
+  font-weight: 300;
+  padding-bottom: 10px;
+  z-index:2;
+}
+.campaign-info span{
+  font-family: 'GMarketSans';
+  font-size:60px;
+  font-weight: 500;
 }
 .campaign-info p{
-  font-size:22px;
-  line-height:1.6;
+  font-size:32px;
+  line-height:1.2;
   margin-bottom:80px;
+  z-index:2;
 }
 .progress-item{
   display:flex;
+  width:60%;
   align-items:center;
   margin-bottom:35px;
+  z-index:2;
 }
 .progress-item span{
   width:120px;
   font-size:24px;
+  z-index:2;
 }
 .progress-item strong{
   width:140px;
   text-align:right;
   font-size:24px;
   font-weight:500;
+  z-index:2;
 }
 .progress-bar{
   flex:1;
@@ -119,7 +144,8 @@
   margin:0 30px;
   border-radius:50px;
   overflow:hidden;
-  background:#d9d9d9;
+  background:#929292;
+  z-index:2;
 }
 .fill{
   width:0;
@@ -127,10 +153,12 @@
   border-radius:50px;
   background:linear-gradient(
     90deg,
-    #d6e3f1,
-    #b7cde6
+    #D3ED8C,
+    #81C7B1
   );
   transition:1.8s cubic-bezier(.22,.61,.36,1);
+
+  z-index:3;
 }
 /* Tab Slide */
 #s4 {
@@ -151,20 +179,36 @@
   margin-bottom: 40px;
 }
 .tab-btn {
-  width: 200px;
-  height: 60px;
-  border: 2px solid #90BEEA;
-  border-radius: 50px;
-  background: #fff;
-  color: #333;
-  font-size: 20px;
+  border: none;
   cursor: pointer;
-  transition: 0.3s;
+  background: transparent;
+  transition: 0.3s ease;
 }
-.tab-btn.active,
-.tab-btn:hover {
-  background: #90BEEA;
-  color: #fff;
+
+.tab-btn img{
+  width: 120px;
+  height: 60px;
+  transform:translateY(-20px);
+  transition: 0.3s ease;
+}
+.tab-btn:hover img{
+  transform:translateY(-30px);
+}
+.tab-btn span{
+  display: block;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 10px;
+  transform:translateY(-25px);
+  opacity:0;
+  transition: 0.3s ease;
+}
+.tab-btn.active span{
+  color: var(--mint);
+}
+.tab-btn:hover span{transform:translateY(-15px);
+  opacity:1;
 }
 .pet-marquee {
   display: none;
@@ -188,9 +232,9 @@
   width: 280px;
   height: 400px;
   padding: 22px;
-  border: 4px solid #90BEEA;
+  border: 4px solid var(--primary);
   border-radius: 20px;
-  background: #fff;
+  background: var(--white);
 }
 .img-box {
   width: 100%;
@@ -198,7 +242,7 @@
   margin-bottom: 24px;
   overflow: hidden;
   border-radius: 18px;
-  background: #fff;
+  background: var(--white);
 }
 .img-box img {
   width: 100%;
@@ -227,7 +271,7 @@
 #s5 {
   width: 100%;
   padding: 90px 0;
-  background: #fff;
+  background: var(--white);
 }
 .bottom-inner {
   width: 90%;
@@ -238,23 +282,41 @@
   justify-content: space-between;
   gap: 80px;
 }
+
+.review h2{
+  font-family: 'GMarketSans';
+  font-size:40px;
+  font-weight: 300;
+  text-align: center;
+  padding-bottom: 10px;
+  z-index:2;
+}
+.review h2 span{
+  font-family: 'GMarketSans';
+  font-size:40px;
+  font-weight: 500;
+}
+
 .review-slider {
   width: 500px;
-  height: 140px;
+  height: 300px;
   overflow: hidden;
 }
+
 .review-track {
   display: flex;
   flex-direction: column;
+  gap: 20px;
   animation: reviewUp 10s infinite;
 }
+
 .review-card {
   width: 500px;
   height: 140px;
   padding: 18px 32px 18px 22px;
   border: 5px solid #B8D5EF;
   border-radius: 90px;
-  background: #fff;
+  background: var(--white);
   display: flex;
   align-items: center;
   gap: 20px;
@@ -291,18 +353,21 @@
   line-height: 1.5;
   color: #222;
 }
-@keyframes reviewUp {
+@keyframes reviewUp{
   0%,25%{
     transform:translateY(0);
   }
+
   33%,58%{
-    transform:translateY(-140px);
+    transform:translateY(-160px);
   }
+
   66%,91%{
-    transform:translateY(-280px);
+    transform:translateY(-320px);
   }
+
   100%{
-    transform:translateY(-420px);
+    transform:translateY(-480px);
   }
 }
 /* Visit Reservation Form */
@@ -339,7 +404,7 @@
   width: 100%;
   max-width: 700px;
   padding: 50px;
-  background: #fff;
+  background: var(--white);
   border-radius: 40px 40px 0 0;
   position: relative;
   animation: modalUp .4s ease;
