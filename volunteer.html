@@ -17,7 +17,89 @@
   </div>
 
   <header data-include="header.html"></header>
-  <h2>sfknaeflae</h2>
+
+  <main>
+    <div class="volunteer-banner"></div>
+  </main>
+
+  <section class="volunteer-section">
+    <h2>🐾 봉사활동 일정</h2>
+    <p>날짜를 선택하면 해당 봉사 일정을 확인할 수 있어요.</p>
+
+    <div class="calendar-wrap" id="calendarWrap">
+      <div class="calendar-box">
+        <div class="calendar-header">
+          <button id="prevMonth" type="button">‹</button>
+          <h3 id="monthTitle">2026년 6월</h3>
+          <button id="nextMonth" type="button">›</button>
+        </div>
+
+        <div class="weekdays">
+          <span>일</span>
+          <span>월</span>
+          <span>화</span>
+          <span>수</span>
+          <span>목</span>
+          <span>금</span>
+          <span>토</span>
+        </div>
+
+        <div class="dates" id="dates"></div>
+
+        <div class="legend">
+          <span><i class="green"></i> 신청 가능</span>
+          <span><i class="orange"></i> 마감 임박</span>
+          <span><i class="gray"></i> 마감</span>
+        </div>
+      </div>
+
+      <div class="schedule-box" id="scheduleBox">
+        <div class="schedule-title">
+          <h3 id="selectedDate">날짜를 선택해주세요</h3>
+          <span id="scheduleCount">총 0건의 일정</span>
+        </div>
+
+        <div id="scheduleContent">
+          <div class="empty-schedule">
+            날짜를 선택해주세요 🐾
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="apply-modal" id="applyModal">
+    <div class="apply-modal-inner">
+      <button class="close-modal" id="closeModal" type="button">✕</button>
+
+      <h3>봉사활동 신청</h3>
+      <p class="modal-desc">선택한 일정으로 바로 신청할 수 있어요.</p>
+
+      <form id="volunteerApplyForm" class="volunteer-apply-form">
+        <input type="hidden" id="applyDate" name="applyDate">
+        <input type="hidden" id="applyTitle" name="applyTitle">
+        <input type="hidden" id="applyTime" name="applyTime">
+
+        <div class="selected-schedule">
+          <strong id="modalTitle"></strong>
+          <span id="modalDate"></span>
+        </div>
+
+        <div class="form-row">
+          <label for="applicantName">이름</label>
+          <input type="text" id="applicantName" placeholder="이름을 입력해주세요" required>
+        </div>
+
+        <div class="form-row">
+          <label for="applicantPhone">연락처</label>
+          <input type="tel" id="applicantPhone" placeholder="010-0000-0000" required>
+        </div>
+
+        <button class="submit-btn" type="submit">신청하기</button>
+      </form>
+    </div>
+  </div>
+</div>
 
   <!-- <footer data-include="footer.html" id="footer">
   </footer> -->
