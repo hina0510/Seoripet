@@ -61,39 +61,35 @@ ul, li{
 }
 /* About us */
 /* ==============================
-ABOUT US - Hero Banner (수정본)
+ABOUT US - Hero Banner 
 ============================== */
 .about-hero {
   width: 100%;
   height: 500px;
   
-
   padding-top: 100px; 
   position: relative;
   overflow: hidden;
   background: #F2EEE6;
 }
 
-/* 배경 이미지 영역: 브라우저 전체(오른쪽 끝까지) 차지하게 수정 */
 .about-hero-img {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1; /* 가장 아래에 배치 */
+  z-index: 1;
 }
 
 .about-hero-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* 이미지가 오른쪽 중심(강아지/고양이)으로 고정되어 우측에 붙도록 설정 */
   object-position: right center; 
   display: block;
 }
 
-/* 좌→우 그라데이션: 이미지와 텍스트 사이(z-index: 2)에 배치하여 자연스럽게 블렌딩 */
 .about-hero::before {
   content: '';
   position: absolute;
@@ -101,19 +97,19 @@ ABOUT US - Hero Banner (수정본)
   background: linear-gradient(
     to right,
     #F2EEE6 0%,
-    #F2EEE6 35%, /* 베이지색이 유지되는 영역 넓힘 */
+    #F2EEE6 35%,
     rgba(242,238,230,0.9) 45%,
     rgba(242,238,230,0.3) 65%,
     transparent 85%
   );
-  z-index: 2; /* 이미지보다 위, 텍스트보다 아래 */
+  z-index: 2;
   pointer-events: none;
 }
 
 /* 텍스트 레이어 컨테이너 */
 .about-hero-inner {
   position: relative;
-  z-index: 3; /* 그라데이션과 이미지보다 가장 위에 오도록 설정 */
+  z-index: 3;
   height: 100%;
   max-width: 1400px;
   margin: 0 auto;
@@ -846,6 +842,308 @@ about us 스크롤업
 
 
 /* Visit us */
+/* ==============================
+   방문 안내 페이지 타이틀
+============================== */
+.visit-page-title {
+  margin-bottom: 40px;
+}
+
+.visit-page-title h2 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #1F2A44;
+  margin-bottom: 14px;
+}
+
+.visit-page-title p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.75;
+}
+
+/* ==============================
+   지점 카드
+============================== */
+.visit-card {
+  border: 1px solid #E0DBD4;
+  border-radius: 24px;
+  background: #fff;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.visit-card-top {
+  display: flex;
+}
+
+.visit-info {
+  width: 340px;
+  flex-shrink: 0;
+  padding: 36px 36px 32px;
+  border-right: 1px solid #E0DBD4;
+}
+
+.visit-num {
+  font-size: 13px;
+  font-weight: 700;
+  color: #90BEEA;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.visit-branch-name {
+  font-size: 30px;
+  font-weight: 700;
+  color: #1F2A44;
+  margin-bottom: 24px;
+}
+
+.visit-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.visit-details li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.65;
+}
+
+.visit-details li i {
+  color: #364B44;
+  font-size: 15px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  width: 16px;
+  text-align: center;
+}
+
+.visit-closed {
+  color: #999;
+  font-size: 13px;
+}
+
+.visit-btn-wrap {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.visit-reserve-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: #364B44;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.visit-reserve-btn:hover {
+  background: #2a3a34;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(54,75,68,0.25);
+}
+
+.visit-map-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid #D0C9BE;
+  background: #fff;
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.visit-map-btn:hover {
+  border-color: #90BEEA;
+  color: #4B86C5;
+  background: #EAF4FD;
+}
+
+.visit-map-img {
+  flex: 1;
+  min-height: 280px;
+  overflow: hidden;
+  position: relative;  /* ← 추가 */
+}
+
+.visit-kakaomap {       /* ← 새로 추가된 클래스 */
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border: none;
+  display: block;
+}
+
+.visit-map-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: 0.4s;
+}
+
+.visit-map-img:hover img {
+  transform: scale(1.03);
+}
+
+.visit-transport {
+  display: flex;
+  border-top: 1px solid #E0DBD4;
+  padding: 24px 36px;
+}
+
+.transport-item {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-right: 24px;
+}
+
+.transport-item:not(:last-child) {
+  border-right: 1px solid #E0DBD4;
+  margin-right: 24px;
+}
+
+.transport-item img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.transport-text strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1F2A44;
+  margin-bottom: 5px;
+}
+
+.transport-text p {
+  font-size: 12px;
+  color: #777;
+  line-height: 1.6;
+}
+
+/* ==============================
+   예약 유도 배너
+============================== */
+.visit-reserve-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 36px 50px;
+  border: 1px solid #E0DBD4;
+  border-radius: 24px;
+  background: #F8F6F0;
+  margin-bottom: 60px;
+  overflow: hidden;
+}
+
+.visit-reserve-banner-img {
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.visit-reserve-banner-img img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.visit-reserve-banner-text {
+  flex: 1;
+}
+
+.visit-reserve-banner-text h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F2A44;
+  margin-bottom: 8px;
+}
+
+.visit-reserve-banner-text p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+}
+
+.visit-reserve-btn--dark {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.visit-banner-deco {
+  position: absolute;
+  right: 160px;
+  bottom: -10px;
+  width: 80px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+/* ==============================
+   Responsive - visit-us
+============================== */
+@media (max-width: 1024px) {
+  .visit-info {
+    width: 280px;
+    padding: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .visit-card-top {
+    flex-direction: column;
+  }
+  .visit-info {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #E0DBD4;
+  }
+  .visit-map-img {
+    min-height: 220px;
+  }
+  .visit-transport {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 24px;
+  }
+  .transport-item {
+    border-right: none !important;
+    margin-right: 0 !important;
+    padding-right: 0;
+  }
+  .visit-reserve-banner {
+    flex-direction: column;
+    padding: 28px 24px;
+    text-align: center;
+    gap: 16px;
+  }
+  .visit-banner-deco {
+    display: none;
+  }
+}
+
+
 
 /* Adopt-dog */
 #adopt-dog-content{
