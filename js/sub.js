@@ -378,6 +378,7 @@ document.addEventListener("DOMContentLoaded", function () {
   applyModal.classList.add("show");
 });
 
+
 if (volunteerApplyForm) {
   volunteerApplyForm.addEventListener("submit", function (e) {
     e.preventDefault();

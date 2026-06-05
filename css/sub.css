@@ -755,10 +755,9 @@ ul, li{
 }
 /* Volunteer____________ */
 .volunteer-banner{
-  width:100%;
-  height:360px;
+  width: 100%;
+  height:1100px;
   background:url(../image/volunteer-banner.png) no-repeat center/cover;
-  overflow: cover;
 }
 .volunteer-section {
   padding: 70px 0 100px;
@@ -1138,13 +1137,13 @@ ul, li{
 }
 
 .submit-btn{
-  width:100%;
-  height:54px;
+  width:30%;
+  height:40px;
   border-radius:50px;
-  border: 5px solid #32443D;
+  border: 3px solid #32443D;
   background: #D3ED8C;
   color:#222;
-  font-size:20px;
+  font-size:16px;
   font-weight:700;
   cursor:pointer;
 }
