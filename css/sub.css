@@ -848,11 +848,57 @@ about us 스크롤업
 /* Visit us */
 
 /* Adopt-dog */
+#adopt-dog-content{
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+}
+.adopt-tabs {
+  display: flex;
+  justify-content: center;
+  gap:14px;
+  margin-bottom:50px;
+}
+.adopt-tab-btn {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  transition: 0.3s ease;
+}
+.adopt-tab.active{
+  display:block;
+}
+.adopt-tab-btn img{
+  width: 120px;
+  height: 60px;
+  transition: 0.3s ease;
+}
 
+.adopt-pet{
+  display:none;
+}
+
+.adopt-pet.active{
+  display:block;
+}
+
+.adopt-card-list{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.adopt-card{
+  width: 280px;
+  height: 400px;
+  padding: 22px;
+  border: 4px solid var(--primary);
+  border-radius: 20px;
+  background: var(--white);
+}
 /* Adopt-cat */
 
 /* Donate-info */
-.donation-content{
+#donation-content{
   width:100%;
 }
 
@@ -869,7 +915,7 @@ about us 스크롤업
   height:50px;
   border:1px solid #DAD7D1;
   border-radius:999px;
-  background:#fff;
+  background:var(--white);
   color:#1F2A44;
   font-size:16px;
   font-weight:500;
@@ -878,14 +924,14 @@ about us 스크롤업
 }
 
 .donation-tab.active{
-  background:#90BEEA;
-  border-color:#90BEEA;
-  color:#fff;
+  background:var(--primary);
+  border-color: var(--primary);
+  color:var(--white);
 }
 
 .donation-tab:hover:not(.active){
   background:#EAF4FD;
-  border-color:#90BEEA;
+  border-color: var(--primary);
   color:#4B86C5;
 }
 
@@ -895,7 +941,7 @@ about us 스크롤업
   padding:48px;
   border:1px solid #DAD7D1;
   border-radius:28px;
-  background:#fff;
+  background:var(--white);
 }
 
 .donation-panel.active{
@@ -905,7 +951,7 @@ about us 스크롤업
 .donation-label{
   display:inline-block;
   margin-bottom:18px;
-  color:#90BEEA;
+  color: var(--primary);
   font-size:15px;
   font-weight:700;
 }
@@ -927,24 +973,24 @@ about us 스크롤업
   margin:36px 0;
 }
 
-.progress-info{
+.donation-progress-info{
   display:flex;
   justify-content:space-between;
   align-items:end;
   margin-bottom:14px;
 }
 
-.progress-info strong{
+.donation-progress-info strong{
   color:#1F2A44;
   font-size:28px;
 }
 
-.progress-info span{
+.donation-progress-info span{
   color:#777;
   font-size:15px;
 }
 
-.progress-bar{
+.donation-progress-bar{
   width:100%;
   height:12px;
   overflow:hidden;
@@ -952,14 +998,14 @@ about us 스크롤업
   background:#EAF4FD;
 }
 
-.progress-bar span{
+.donation-progress-bar span{
   display:block;
   height:100%;
   border-radius:999px;
-  background:#90BEEA;
+  color: var(--primary);
 }
 
-.progress-percent{
+.donation-progress-percent{
   margin-top:12px;
   color:#4B86C5 !important;
   font-size:16px !important;
@@ -977,8 +1023,8 @@ about us 스크롤업
   height:54px;
   border:0;
   border-radius:999px;
-  background:#90BEEA;
-  color:#fff;
+  background: var(--primary);
+  color:var(--white);
   font-size:17px;
   font-weight:600;
   cursor:pointer;
@@ -1037,7 +1083,7 @@ about us 스크롤업
   padding:16px 18px;
   border:1px solid #DAD7D1;
   border-radius:16px;
-  background:#fff;
+  background:var(--white);
   font-size:16px;
   outline:none;
 }
@@ -1049,7 +1095,7 @@ about us 스크롤업
 
 .form-row input:focus,
 .form-row textarea:focus{
-  border-color:#90BEEA;
+  border-color: var(--primary);
 }
 
 /* amount */
@@ -1074,16 +1120,16 @@ about us 스크롤업
   justify-content:center;
   border:1px solid #DAD7D1;
   border-radius:999px;
-  background:#fff;
+  background:var(--white);
   color:#1F2A44;
   cursor:pointer;
   transition:.3s;
 }
 
 .amount-list input:checked + span{
-  background:#90BEEA;
-  border-color:#90BEEA;
-  color:#fff;
+  background: var(--primary);
+  border-color: var(--primary);
+  color:var(--white);
 }
 
 .custom-amount{
@@ -1119,7 +1165,7 @@ about us 스크롤업
   width:360px;
   padding:42px 30px;
   border-radius:24px;
-  background:#fff;
+  background:var(--white);
   text-align:center;
   box-shadow:0 20px 50px rgba(0,0,0,.15);
 }
@@ -1181,17 +1227,16 @@ about us 스크롤업
   }
 }
 /* Imfact-report */
-.report-section{
+#report-section{
   width:100%;
 }
 
 .report-card{
-  max-width:920px;
-  margin:auto;
+  margin:80px auto;
   border:1px solid var(--line);
   border-radius:26px;
   overflow:hidden;
-  background:#fff;
+  background:var(--white);
 }
 
 .report-visual{
@@ -1302,7 +1347,7 @@ about us 스크롤업
 }
 
 .seg1{stroke:#5FA8EE;}
-.seg2{stroke:#90BEEA;}
+.seg2{stroke:var(--primary);}
 .seg3{stroke:#BBD9F5;}
 .seg4{stroke:#DDEEFF;}
 
@@ -1364,7 +1409,7 @@ about us 스크롤업
 .bar{
   height:10px;
   border-radius:999px;
-  background:var(--primary-light);
+  background:var(--secondary);
   overflow:hidden;
 }
 
@@ -1414,7 +1459,7 @@ about us 스크롤업
   width:18px;
   height:0;
   border-radius:8px 8px 0 0;
-  background:linear-gradient(180deg,#90BEEA,#D8ECFC);
+  background:linear-gradient(180deg,var(--primary),#D8ECFC);
   transition:1s ease;
 }
 
@@ -1434,7 +1479,7 @@ about us 스크롤업
   bottom:78px;
   width:82%;
   height:3px;
-  background:linear-gradient(90deg,#90BEEA,#1680E5);
+  background:linear-gradient(90deg,var(--primary),#1680E5);
   border-radius:999px;
   transform:scaleX(0);
   transform-origin:left;
@@ -1475,7 +1520,7 @@ about us 스크롤업
   display:flex;
   align-items:center;
   justify-content:center;
-  color:var(--primary-dark);
+  color:var(--blue);
   font-size:30px;
 }
 

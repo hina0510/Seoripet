@@ -1,3 +1,21 @@
+//side tab
+function setSubMenuActive() {
+  const currentPage = window.location.pathname.split("/").pop();
+  const subBtns = document.querySelectorAll(".sub-btn");
+
+  subBtns.forEach(function (btn) {
+    btn.classList.remove("active");
+
+    const href = btn.getAttribute("href");
+
+    if (href === currentPage) {
+      btn.classList.add("active");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", setSubMenuActive);
+
 /* About us */
 /* ==============================
 about-us 스크롤업
@@ -28,7 +46,23 @@ document.addEventListener("DOMContentLoaded", function () {
 /* Visit us */
 
 /* Adopt-dog */
+const tabBtns = document.querySelectorAll('.adopt-tab-btn');
+const petContents = document.querySelectorAll('.adopt-pet');
 
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.pet;
+
+    tabBtns.forEach(btn => btn.classList.remove('active'));
+    btn.classList.add('active');
+
+    petContents.forEach(content => {
+      content.classList.remove('active');
+    });
+
+    document.getElementById(target).classList.add('active');
+  });
+});
 /* Adopt-cat */
 
 /* Donate-info */document.addEventListener("DOMContentLoaded", function () {
