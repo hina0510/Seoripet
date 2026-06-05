@@ -40,6 +40,7 @@ ul, li{
   background: transparent;
   transition: 0.3s ease;
 }
+
 .adopt-tab.active{
   display:block;
 }
