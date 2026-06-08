@@ -17,10 +17,85 @@
   </div>
 
   <header data-include="header.html"></header>
+  
+  <main>
+    <div class="notice-banner"></div>
+  </main>
+
+  <section class="notice-section">
+
+    <div class="notice-tabs">
+      <button class="tab active" data-category="all">전체</button>
+      <button class="tab" data-category="center">공지</button>
+      <button class="tab" data-category="volunteer">봉사안내</button>
+      <button class="tab" data-category="adopt">입양안내</button>
+      <button class="tab" data-category="donation">후원안내</button>
+      <button class="tab" data-category="event">교육/행사</button>
+    </div>
+
+    <div class="notice-grid">
+
+      <article class="notice-card" data-category="center">
+        <div class="card-img img-01">
+          <span class="badge">공지</span>
+        </div>
+        <div class="card-body">
+          <h3>센터 운영 시간 변경 안내</h3>
+          <p>2026.06.10 🐾</p>
+        </div>
+      </article>
+
+      <article class="notice-card" data-category="volunteer">
+        <div class="card-img img-02">
+          <span class="badge">봉사안내</span>
+        </div>
+        <div class="card-body">
+          <h3>6월 정기 봉사활동 참여자 모집</h3>
+          <p>2026.05.28 🐾</p>
+        </div>
+      </article>
+
+      <article class="notice-card" data-category="adopt">
+        <div class="card-img img-03">
+          <span class="badge">입양안내</span>
+        </div>
+        <div class="card-body">
+          <h3>유기견·유기묘 입양 상담 일정</h3>
+          <p>2026.05.04 🐾</p>
+        </div>
+      </article>
+
+      <article class="notice-card" data-category="donation">
+        <div class="card-img img-04">
+          <span class="badge">후원안내</span>
+        </div>
+        <div class="card-body">
+          <h3>사료 및 물품 기부 안내</h3>
+          <p>2026.03.25 🐾</p>
+        </div>
+      </article>
+
+      <article class="notice-card" data-category="event">
+        <div class="card-img img-05">
+          <span class="badge">교육/행사</span>
+        </div>
+        <div class="card-body">
+          <h3>반려동물 돌봄 교육 참가자 모집</h3>
+          <p>2026.05.22 🐾</p>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
 
 
-  <!-- <footer data-include="footer.html" id="footer">
-  </footer> -->
+
+
+
+
+  <footer data-include="footer.html" id="footer"></footer>
+
 	<script src="js/includeHTML.js"></script>
 	<script src="js/includeRouter.js"></script>
   <script src="js/header.js"></script>

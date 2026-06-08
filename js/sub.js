@@ -15,6 +15,31 @@ function setSubMenuActive() {
 document.addEventListener("DOMContentLoaded", setSubMenuActive);
 
 /* About us */
+/* ==============================
+about-us 스크롤업
+============================== */
+document.addEventListener("DOMContentLoaded", function () {
+  const scrollFadeItems = document.querySelectorAll(".scroll-fade");
+
+  if (scrollFadeItems.length > 0) {
+    const cabinetObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.25,
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    scrollFadeItems.forEach(function (item) {
+      cabinetObserver.observe(item);
+    });
+  }
+});
+
 
 /* Visit us */
 
@@ -405,6 +430,7 @@ document.addEventListener("DOMContentLoaded", function () {
           >
             신청하기
           </button>
+          
 
         </div>
       `).join("");
@@ -483,4 +509,52 @@ if (volunteerApplyForm) {
   renderCalendar(currentYear, currentMonth);
 });
 
+const noticeBox = document.querySelector('.volunteer-notice');
+
+if (noticeBox) {
+  window.addEventListener('scroll', () => {
+    const noticeTop = noticeBox.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (noticeTop < windowHeight - 100) {
+      noticeBox.classList.add('show');
+    }
+  });
+}
+
 /* Notice */
+document.addEventListener("DOMContentLoaded", () => {
+
+  const tabs = document.querySelectorAll(".tab");
+  const cards = document.querySelectorAll(".notice-card");
+
+  tabs.forEach(tab => {
+
+    tab.addEventListener("click", () => {
+
+      tabs.forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+      tab.classList.add("active");
+
+      const category = tab.dataset.category;
+
+      cards.forEach(card => {
+
+        if (
+          category === "all" ||
+          card.dataset.category === category
+        ) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+    });
+
+  });
+
+});
