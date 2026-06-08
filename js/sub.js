@@ -5,9 +5,7 @@ function setSubMenuActive() {
 
   subBtns.forEach(function (btn) {
     btn.classList.remove("active");
-
     const href = btn.getAttribute("href");
-
     if (href === currentPage) {
       btn.classList.add("active");
     }
@@ -25,45 +23,61 @@ const tabBtns = document.querySelectorAll('.adopt-tab-btn');
 const petContents = document.querySelectorAll('.adopt-pet');
 
 tabBtns.forEach(btn => {
-
   btn.addEventListener('click', () => {
-
     const target = btn.dataset.pet;
 
     // active 제거
     tabBtns.forEach(tab => tab.classList.remove('active'));
-
     petContents.forEach(content => {
       content.classList.remove('active');
     });
 
     // active 추가
     btn.classList.add('active');
-
     document.getElementById(target)
       .classList.add('active');
 
     // 아이콘 변경
-
     const dogIcon = document.querySelector('[data-pet="dog"] img');
     const catIcon = document.querySelector('[data-pet="cat"] img');
 
     if(target === 'dog'){
-
       dogIcon.src = 'image/bone_c.png';
       catIcon.src = 'image/fish_g.png';
-
     }else{
-
       dogIcon.src = 'image/bone_g.png';
       catIcon.src = 'image/fish_c.png';
-
     }
-
   });
-
 });
-/* Adopt-cat */
+
+// adopt modal
+const adoptModal = document.getElementById('adoptModal');
+const adoptCloseBtn = document.getElementById('adoptCloseBtn');
+const applyBtns = document.querySelectorAll('.apply-btn');
+
+// open modal
+applyBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    adoptModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+// close button
+adoptCloseBtn.addEventListener('click', () => {
+  adoptModal.classList.remove('active');
+  document.body.style.overflow = '';
+});
+
+// background click close
+adoptModal.addEventListener('click', (e) => {
+  if(e.target === adoptModal){
+    adoptModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+
 
 /* Donate-info */document.addEventListener("DOMContentLoaded", function () {
   const tabs = document.querySelectorAll(".donation-tab");
