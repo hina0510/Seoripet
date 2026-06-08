@@ -164,10 +164,41 @@ document.addEventListener("DOMContentLoaded", function () {
   const customAmountRadio = document.getElementById("customAmountRadio");
   const customAmount = document.getElementById("customAmount");
 
-  // 후원 탭이 없는 페이지면 실행 중단
+  const donationForm = document.getElementById("donationForm");
+  const donationModal = document.getElementById("donationModal");
+  const modalClose = document.getElementById("modalClose");
+
   if (!tabs.length || !panels.length) return;
 
-  // 탭 전환
+  function animateDonationBar(panel) {
+    const bar = panel.querySelector(".donation-progress-bar span");
+
+    if (!bar) return;
+
+    const width = bar.dataset.width;
+
+    bar.style.width = "0";
+
+    setTimeout(function () {
+      bar.style.width = width;
+    }, 50);
+  }
+
+  function moveDonationFormMobile(btn) {
+    if (!formWrap) return;
+
+    const originalParent = document.getElementById("donation-content");
+    const panel = btn.closest(".donation-panel");
+
+    if (!originalParent) return;
+
+    if (window.innerWidth <= 767 && panel) {
+      panel.after(formWrap);
+    } else {
+      originalParent.appendChild(formWrap);
+    }
+  }
+
   tabs.forEach(function (tab) {
     tab.addEventListener("click", function () {
       const targetId = tab.dataset.target;
@@ -194,6 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
   setTimeout(function () {
     const activePanel = document.querySelector(".donation-panel.active");
 
@@ -202,7 +234,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 100);
 
-  // 후원하기 버튼 클릭 시 폼 열기
   document.addEventListener("click", function (e) {
     const btn = e.target.closest(".open-form-btn");
 
@@ -219,6 +250,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (formWrap) {
+      moveDonationFormMobile(btn);
+
       formWrap.classList.add("open");
 
       setTimeout(function () {
@@ -230,21 +263,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  function animateDonationBar(panel) {
-    const bar = panel.querySelector(".donation-progress-bar span");
+  window.addEventListener("resize", function () {
+    const originalParent = document.getElementById("donation-content");
 
-    if (!bar) return;
+    if (!formWrap || !originalParent) return;
 
-    const width = bar.dataset.width;
+    if (window.innerWidth > 767) {
+      originalParent.appendChild(formWrap);
+    }
+  });
 
-    bar.style.width = "0";
-
-    setTimeout(function () {
-      bar.style.width = width;
-    }, 50);
-  }
-
-  // 기타 금액 선택
   if (amountRadios.length && customAmountRadio && customAmount) {
     amountRadios.forEach(function (radio) {
       radio.addEventListener("change", function () {
@@ -259,7 +287,41 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  if (donationForm && donationModal) {
+    donationForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      donationModal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    });
+  }
+
+  if (modalClose && donationModal) {
+    modalClose.addEventListener("click", function () {
+      donationModal.classList.remove("show");
+      document.body.style.overflow = "";
+
+      setTimeout(function () {
+        location.reload();
+      }, 300);
+    });
+  }
+
+  if (donationModal) {
+    donationModal.addEventListener("click", function (e) {
+      if (e.target === donationModal) {
+        donationModal.classList.remove("show");
+        document.body.style.overflow = "";
+
+        setTimeout(function () {
+          location.reload();
+        }, 300);
+      }
+    });
+  }
 });
+
 /* Imfact-report */
 document.addEventListener("DOMContentLoaded", function () {
   const reportCard = document.querySelector(".report-card");
@@ -287,7 +349,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }, {
-    threshold: 0.3
+    threshold: 0.2
   });
 
   scrollItems.forEach(function (item) {

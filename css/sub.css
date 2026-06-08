@@ -1463,7 +1463,6 @@ about us 스크롤업
   display:flex;
   justify-content:center;
 }
-
 .donate-main-banner img{
   width:100%;
   display:block;
@@ -1717,15 +1716,22 @@ about us 스크롤업
   z-index:9999;
   width:100%;
   height:100%;
-  display:none;
+
+  display:flex;
   justify-content:center;
   align-items:flex-start;
   padding-top:90px;
+
   background:rgba(0,0,0,.25);
+
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .3s ease;
 }
 
 .donation-modal.show{
-  display:flex;
+  opacity:1;
+  visibility:visible;
 }
 
 .modal-box{
@@ -1736,6 +1742,15 @@ about us 스크롤업
   background:var(--white);
   text-align:center;
   box-shadow:0 20px 50px rgba(0,0,0,.15);
+
+  transform:translateY(-30px);
+  opacity:0;
+  transition:.35s ease;
+}
+
+.donation-modal.show .modal-box{
+  transform:translateY(-80px);
+  opacity:1;
 }
 
 .modal-box h3{
@@ -1760,40 +1775,6 @@ about us 스크롤업
   cursor:pointer;
 }
 
-/* responsive */
-@media screen and (max-width:768px){
-  .donation-tabs{
-    gap:8px;
-  }
-
-  .donation-tab{
-    min-width:auto;
-    flex:1;
-    font-size:14px;
-  }
-
-  .donation-panel{
-    padding:32px 22px;
-  }
-
-  .donation-panel h3{
-    font-size:26px;
-  }
-
-  .progress-info{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:6px;
-  }
-
-  .amount-list{
-    grid-template-columns:repeat(2, 1fr);
-  }
-
-  .donation-form{
-    padding:32px 22px;
-  }
-}
 /* Imfact-report */
 #report-section{
   width:100%;
@@ -1949,33 +1930,44 @@ about us 스크롤업
 }
 
 /* progress */
+.use-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:15px;
+}
 .use-list li{
-  display:grid;
-  grid-template-columns:110px 1fr 60px 100px;
+  width: 100%;
+  height:40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap:16px;
-  align-items:center;
-  margin-bottom:22px;
 }
 
 .use-list p{
+  width: 100px;
   color:var(--navy);
   font-weight:600;
 }
 
 .use-list em{
+  width: 42px;
   font-style:normal;
   color:#555;
   font-size:14px;
 }
 
 .use-list strong{
+  width: 100px;
   color:#555;
   font-size:14px;
   text-align:right;
 }
 
 .bar{
-  height:10px;
+  width:50%;
+  height:20px;
   border-radius:999px;
   background:var(--secondary);
   overflow:hidden;
@@ -1987,7 +1979,7 @@ about us 스크롤업
   height:100%;
   border-radius:999px;
   background:var(--primary);
-  transition:1s ease;
+  transition:1.5s ease-in-out;
 }
 
 /* monthly chart */
@@ -2028,7 +2020,7 @@ about us 스크롤업
   height:0;
   border-radius:8px 8px 0 0;
   background:linear-gradient(180deg,var(--primary),#D8ECFC);
-  transition:1s ease;
+  transition:2s ease;
 }
 
 .chart-wrap.active .month span{
@@ -2080,8 +2072,246 @@ about us 스크롤업
 .report-card.active .bar span{
   width:var(--w);
 }
+/* responsive */
+@media screen and (max-width:1024px){
+  .donation-tabs{
+    gap:12px;
+  }
 
-@media(max-width:768px){
+  .donation-tab{
+    min-width:auto;
+    flex:1;
+    font-size:14px;
+  }
+
+  .donation-panel{
+    padding:32px 22px;
+  }
+
+  .amount-list{
+    grid-template-columns:repeat(2, 1fr);
+  }
+
+  .donation-modal{
+    align-items:center;
+    padding-top:0;
+  }
+
+  .modal-box{
+    max-width:360px;
+  }
+  .donation-modal.show .modal-box{
+    transform:translateY(-230%);
+  }
+  /* impact-report */
+  .report-card{
+    margin:0 auto;
+    border:1px solid var(--line);
+    border-radius:26px;
+    overflow:hidden;
+    background:var(--white);
+  }
+  .report-visual{
+    padding:20px 24px;
+    flex-direction:column;
+    gap:30px;
+    align-items:flex-start;
+  }
+
+  .report-visual h2{
+    font-size:28px;
+  }
+
+  .report-visual p{
+    font-size:16px;
+  }
+
+  .report-visual img{
+    width:210px;
+    opacity:.9;
+  }
+
+  .report-summary{
+    grid-template-columns:repeat(2,1fr);
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .report-summary div{
+    border-right:0;
+  }
+  .report-summary div strong{
+    font-size: 16px;
+  }
+
+  .donut-chart {
+    width: 220px;
+    aspect-ratio: 1/1;
+  }
+
+  .donut-text strong{
+    font-size: 14px;
+  }
+  .use-inner{
+    grid-template-columns:1fr;
+  }
+
+  .use-list li{
+    gap:8px;
+  }
+  .use-list p{
+    color:var(--navy);
+    font-weight:600;
+  }
+
+  .use-list strong{
+    text-align:left;
+  }
+
+  .report-use,
+  .monthly-report{
+    padding:20px 24px;
+  }
+
+  .report-message{
+    margin:24px;
+    flex-direction:column;
+    gap:20px;
+    align-items:flex-start;
+  }
+}
+@media screen and (max-width:375px){
+  /* tab */
+  .donation-tabs{
+    display: none;
+  }
+
+  /* panel */
+  .donation-panels{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .donation-panel{
+    display:block;
+    padding:25px;
+  }
+
+  .donation-label{
+    font-size:14px;
+  }
+
+  .donation-panel h3{
+    font-size:30px;
+  }
+
+  .donation-panel p{
+    font-size:14px;
+  }
+
+  /* progress */
+  .donation-progress-info strong{
+    font-size:24px;
+  }
+
+  .donation-progress-info span{
+    font-size:14px;
+  }
+  .donation-progress-percent{
+    text-align: right;
+  }
+
+  /* button */
+  .btn-wrap{
+    display:flex;
+    justify-content:center;
+  }
+  .open-form-btn,
+  .submit-btn{
+    width:160px;
+    height:48px;
+    font-size:16px;
+  }
+
+  .donation-form-wrap.open{
+    max-height:1050px;
+  }
+
+  .donation-form h3{
+    font-size:18px;
+  }
+
+  .donation-form > p{
+    font-size: 11px;
+  }
+
+  .form-row label{
+    font-size:14px;
+  }
+
+  /* amount */
+  .amount-list{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:12px;
+  }
+
+  .amount-list span{
+    height:52px;
+  }
+  .use-list li{
+    display: flex;
+  }
+  .use-list p{
+    width: 58px;
+    color:var(--navy);
+    font-weight:600;
+  }
+
+  .use-list strong{
+    width:56px;
+    flex-shrink:0;
+    text-align:left;
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+
+  .bar{
+    flex:1;
+    min-width:0;
+    height:20px;
+    border-radius:999px;
+    background:var(--secondary);
+    overflow:hidden;
+  }
+
+  /* modal */
+  .donation-modal{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:9999;
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding-top:80px;
+  }
+
+  .modal-box{
+    position:relative;
+    width:330px;
+
+    transform:translateY(-30px);
+  }
+
+  .donation-modal.show .modal-box{
+    transform:translateY(80%);
+    opacity:1;
+  }
+  /* impact-report */
   .report-visual{
     padding:40px 24px;
     flex-direction:column;
@@ -2129,9 +2359,9 @@ about us 스크롤업
 
   .report-use,
   .monthly-report{
-    padding:40px 24px;
+    padding:20px 10px;
   }
-
+  .bar-chart{padding:30px 0 0;}
   .report-message{
     margin:24px;
     flex-direction:column;
