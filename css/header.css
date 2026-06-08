@@ -249,7 +249,7 @@
 }
 @media screen and (max-width: 375px){
   #header{
-    height:76px;
+    height:50px;
   }
 
   .pc-nav{
@@ -261,7 +261,8 @@
   }
 
   .logo img{
-    width: 80px;
-    height: 50px;
+    width: 60px;
+    height: 40px;
+    margin: 4px 0;
   }
 }

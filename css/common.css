@@ -188,7 +188,7 @@ body{
 }
 
 /* mobile */
-@media screen and (max-width: 768px){
+@media screen and (max-width: 375px){
   #sub-main{
     padding: 50px 18px 80px;
   }
@@ -229,7 +229,6 @@ body{
   }
 
   .breadcrumb{
-    flex-wrap: wrap;
-    font-size: 13px;
+    display: none;
   }
 }
