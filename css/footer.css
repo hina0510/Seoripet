@@ -1,0 +1,21 @@
+#footer {
+  width: 100%;
+  padding: 20px 0;
+  background: #444;
+  color: #ddd;
+}
+.footer-inner {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+.footer-logo img {
+  width: 160px;
+}
+.footer-info p {
+  font-size: 14px;
+  line-height: 1.7;
+}

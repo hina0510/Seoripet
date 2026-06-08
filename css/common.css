@@ -20,11 +20,11 @@
 html{scroll-behavior: smooth;}
 
 body{
+  font-family: "Pretendard", sans-serif;
   line-height: 1.5;
-  color: #333;
+  color: var(--text);
   background: var(--bg);
 }
-
 
 .goto-top{
   position: fixed;
@@ -57,14 +57,14 @@ body{
 /* sub layout */
 #sub-main{
   width: 100%;
-  padding: 90px 20px 120px;
+  padding: 100px 20px;
 }
 
 .sub-inner{
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-
+  padding-top: 20px;
   display: flex;
   gap: 80px;
   align-items: flex-start;
@@ -199,9 +199,7 @@ body{
   }
 
   .sub-menu{
-    width: 100%;
-    padding: 26px 20px;
-    border-radius: 22px;
+    display: none;
   }
 
   .sub-menu h2{
