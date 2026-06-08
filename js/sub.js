@@ -42,6 +42,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 /* Visit us */
+document.addEventListener("DOMContentLoaded", function () {
+  const visitModal = document.getElementById("visitReserveModal");
+  const visitCloseBtn = document.getElementById("closeVisitModal");
+  const visitForm = document.getElementById("visitReserveForm");
+  const visitToast = document.getElementById("visitToastSuccess");
+  const openBtns = document.querySelectorAll(".open-visit-modal");
+
+  if (!visitModal) return; // visit-us.html이 아닌 페이지에선 실행 안 함
+
+  openBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      visitModal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  visitCloseBtn.addEventListener("click", () => {
+    visitModal.classList.remove("active");
+    document.body.style.overflow = "";
+  });
+
+  visitModal.addEventListener("click", (e) => {
+    if (e.target === visitModal) {
+      visitModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+
+  visitForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    visitModal.classList.remove("active");
+    document.body.style.overflow = "";
+    visitToast.classList.add("show");
+    setTimeout(() => visitToast.classList.remove("show"), 3500);
+    visitForm.reset();
+  });
+});
+
 
 /* Adopt-dog */
 const tabBtns = document.querySelectorAll('.adopt-tab-btn');
