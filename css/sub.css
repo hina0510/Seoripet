@@ -355,7 +355,15 @@
 #donation-content{
   width:100%;
 }
+.donate-main-banner{
+  display:flex;
+  justify-content:center;
+}
 
+.donate-main-banner img{
+  width:100%;
+  display:block;
+}
 /* tab */
 .donation-tabs{
   display:flex;
@@ -454,9 +462,11 @@
 
 .donation-progress-bar span{
   display:block;
+  width:0;
   height:100%;
   border-radius:999px;
-  color: var(--primary);
+  background: var(--primary);
+  transition: width 1.2s ease;
 }
 
 .donation-progress-percent{

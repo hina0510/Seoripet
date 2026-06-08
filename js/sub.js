@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (targetPanel) {
         targetPanel.classList.add("active");
+        animateDonationBar(targetPanel);
       }
 
       if (formWrap) {
@@ -130,6 +131,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+  setTimeout(function () {
+    const activePanel = document.querySelector(".donation-panel.active");
+
+    if (activePanel) {
+      animateDonationBar(activePanel);
+    }
+  }, 100);
 
   // 후원하기 버튼 클릭 시 폼 열기
   document.addEventListener("click", function (e) {
@@ -159,15 +167,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  const donationBars = document.querySelectorAll(".donation-progress-bar span");
+  function animateDonationBar(panel) {
+    const bar = panel.querySelector(".donation-progress-bar span");
 
-  donationBars.forEach(function (bar) {
-    bar.style.setProperty("--w", bar.dataset.width);
+    if (!bar) return;
+
+    const width = bar.dataset.width;
+
+    bar.style.width = "0";
 
     setTimeout(function () {
-      bar.style.width = "var(--w)";
-    }, 100);
-  });
+      bar.style.width = width;
+    }, 50);
+  }
 
   // 기타 금액 선택
   if (amountRadios.length && customAmountRadio && customAmount) {
