@@ -25,18 +25,43 @@ const tabBtns = document.querySelectorAll('.adopt-tab-btn');
 const petContents = document.querySelectorAll('.adopt-pet');
 
 tabBtns.forEach(btn => {
+
   btn.addEventListener('click', () => {
+
     const target = btn.dataset.pet;
 
-    tabBtns.forEach(btn => btn.classList.remove('active'));
-    btn.classList.add('active');
+    // active 제거
+    tabBtns.forEach(tab => tab.classList.remove('active'));
 
     petContents.forEach(content => {
       content.classList.remove('active');
     });
 
-    document.getElementById(target).classList.add('active');
+    // active 추가
+    btn.classList.add('active');
+
+    document.getElementById(target)
+      .classList.add('active');
+
+    // 아이콘 변경
+
+    const dogIcon = document.querySelector('[data-pet="dog"] img');
+    const catIcon = document.querySelector('[data-pet="cat"] img');
+
+    if(target === 'dog'){
+
+      dogIcon.src = 'image/bone_c.png';
+      catIcon.src = 'image/fish_g.png';
+
+    }else{
+
+      dogIcon.src = 'image/bone_g.png';
+      catIcon.src = 'image/fish_c.png';
+
+    }
+
   });
+
 });
 /* Adopt-cat */
 
@@ -153,8 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(item);
   });
 });
-
-
 /* Volunteer */
 document.addEventListener("DOMContentLoaded", function () {
   const datesEl = document.getElementById("dates");
