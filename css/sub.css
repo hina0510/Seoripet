@@ -60,6 +60,7 @@ ul, li{
   transition: 0.3s ease;
 }
 
+/* adopt */
 .adopt-pet{
   display:none;
 }
@@ -69,19 +70,306 @@ ul, li{
 }
 
 .adopt-card-list{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:30px;
 }
+
 .adopt-card{
-  width: 280px;
-  height: 400px;
-  padding: 22px;
-  border: 4px solid var(--primary);
-  border-radius: 20px;
-  background: var(--white);
+  position:relative;
+  width:100%;
+  aspect-ratio:1 / 1.35;
+  overflow:hidden;
+  border-radius:20px;
 }
-/* Adopt-cat */
+
+/* 카드 메인 이미지 */
+.adopt-card img{
+  max-width:none;
+}
+
+.adopt-card > img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:.4s;
+}
+
+/* 오버레이 */
+.card-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.55);
+  opacity:0;
+  visibility:hidden;
+  transition:.35s;
+}
+
+.adopt-card:hover .card-overlay{
+  opacity:1;
+  visibility:visible;
+}
+
+.adopt-card:hover > img{
+  transform:scale(1.05);
+}
+
+/* 아이콘 */
+.pet-icon{
+  width:60px;
+  margin-bottom:24px;
+}
+
+/* 텍스트 */
+.pet-info{
+  margin-bottom:26px;
+}
+
+.pet-info li{
+  color:#fff;
+  font-size:18px;
+  font-weight:500;
+  line-height:2;
+}
+
+/* 버튼 */
+.apply-btn{
+  border:none;
+  background:none;
+  cursor:pointer;
+  padding:0;
+}
+
+.apply-btn img{
+  width:160px;
+  display:block;
+  transition:.25s;
+}
+
+.apply-btn:hover img{
+  transform:translateY(-3px);
+}
+
+/* adopt modal */
+.adopt-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  padding:30px;
+  background:rgba(0,0,0,.45);
+  overflow-y:auto;
+  z-index:99999;
+}
+
+.adopt-modal.active{
+  display:flex;
+}
+
+.adopt-modal-content{
+  position:relative;
+  width:100%;
+  max-width:640px;
+  padding:42px 46px;
+  border-radius:36px;
+  background:#F7F7F7;
+  animation:adoptModal .35s ease;
+}
+
+/* close */
+.adopt-close-btn{
+  position:absolute;
+  top:22px;
+  right:26px;
+  border:none;
+  background:none;
+  font-size:40px;
+  font-weight:300;
+  cursor:pointer;
+}
+
+/* form */
+.adopt-form{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+.adopt-row.two{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+
+.adopt-input label{
+  display:block;
+  margin-bottom:12px;
+  color:#222;
+  font-size:17px;
+  font-weight:700;
+}
+
+.adopt-input label span{
+  color:#81C7B1;
+}
+
+.adopt-input input,
+.adopt-input textarea{
+  width:100%;
+  border:none;
+  outline:none;
+  background:#EFECE8;
+  border-radius:18px;
+  padding:0 22px;
+  font-size:16px;
+  color:#333;
+}
+
+.adopt-input input{
+  height:58px;
+}
+
+.adopt-input textarea{
+  height:100px;
+  padding-top:18px;
+  resize:none;
+}
+
+/* radio */
+.adopt-radio-wrap{
+  display:flex;
+  align-items:center;
+  gap:38px;
+  margin-top:-6px;
+}
+
+.radio-box{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.radio-box input{
+  display:none;
+}
+
+.radio-box span{
+  position:relative;
+  width:20px;
+  height:20px;
+  border:2px solid #32443D;
+  border-radius:50%;
+}
+
+.radio-box input:checked + span::after{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#32443D;
+  transform:translate(-50%,-50%);
+}
+
+/* button */
+.adopt-submit-btn{
+  width:100%;
+  height:54px;
+  margin-top:6px;
+  border:none;
+  border-radius:18px;
+  background:#D3ED8C;
+  color:#222;
+  font-size:20px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.adopt-submit-btn:hover{
+  opacity:.9;
+}
+
+/* animation */
+@keyframes adoptModal{
+  from{
+    opacity:0;
+    transform:scale(.92);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* responsive */
+@media(max-width:768px){
+  .adopt-modal{
+    padding:16px;
+  }
+
+  .adopt-modal-content{
+    padding:30px 22px;
+    border-radius:24px;
+  }
+
+  .adopt-row.two{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .adopt-radio-wrap{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+  }
+
+  .adopt-input label{
+    font-size:15px;
+  }
+
+  .adopt-input input{
+    height:52px;
+    font-size:15px;
+  }
+
+  .adopt-input textarea{
+    font-size:15px;
+  }
+
+  .adopt-submit-btn{
+    width:100%;
+    height:56px;
+    font-size:20px;
+  }
+}
+
+/* date */
+.date-input{
+  position:relative;
+}
+
+/* 달력 아이콘 */
+.date-input::-webkit-calendar-picker-indicator{
+  cursor:pointer;
+  opacity:1;
+}
+
+/* 날짜 placeholder 느낌 */
+.date-input{
+  color:#333;
+}
 
 /* Donate-info */
 #donation-content{
