@@ -329,6 +329,7 @@ document.addEventListener("DOMContentLoaded", function () {
           >
             신청하기
           </button>
+          
 
         </div>
       `).join("");
@@ -407,4 +408,52 @@ if (volunteerApplyForm) {
   renderCalendar(currentYear, currentMonth);
 });
 
+const noticeBox = document.querySelector('.volunteer-notice');
+
+if (noticeBox) {
+  window.addEventListener('scroll', () => {
+    const noticeTop = noticeBox.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (noticeTop < windowHeight - 100) {
+      noticeBox.classList.add('show');
+    }
+  });
+}
+
 /* Notice */
+document.addEventListener("DOMContentLoaded", () => {
+
+  const tabs = document.querySelectorAll(".tab");
+  const cards = document.querySelectorAll(".notice-card");
+
+  tabs.forEach(tab => {
+
+    tab.addEventListener("click", () => {
+
+      tabs.forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+      tab.classList.add("active");
+
+      const category = tab.dataset.category;
+
+      cards.forEach(card => {
+
+        if (
+          category === "all" ||
+          card.dataset.category === category
+        ) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+    });
+
+  });
+
+});
