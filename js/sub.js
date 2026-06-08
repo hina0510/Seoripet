@@ -51,39 +51,48 @@ tabBtns.forEach(btn => {
   });
 });
 
-// adopt modal
-const adoptModal = document.getElementById('adoptModal');
-const adoptCloseBtn = document.getElementById('adoptCloseBtn');
-const applyBtns = document.querySelectorAll('.apply-btn');
+/* Adopt modal */
+document.addEventListener("DOMContentLoaded", function () {
+  const adoptModal = document.getElementById("adoptModal");
+  const adoptCloseBtn = document.getElementById("adoptCloseBtn");
+  const applyBtns = document.querySelectorAll(".apply-btn");
 
-// open modal
-applyBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    adoptModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  // 입양 모달이 없는 페이지면 실행 안 함
+  if (!adoptModal) return;
+
+  // 신청 버튼
+  if (applyBtns.length) {
+    applyBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        adoptModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+    });
+  }
+
+  // 닫기 버튼
+  if (adoptCloseBtn) {
+    adoptCloseBtn.addEventListener("click", function () {
+      adoptModal.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+  }
+
+  // 배경 클릭 닫기
+  adoptModal.addEventListener("click", function (e) {
+    if (e.target === adoptModal) {
+      adoptModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
   });
 });
 
-// close button
-adoptCloseBtn.addEventListener('click', () => {
-  adoptModal.classList.remove('active');
-  document.body.style.overflow = '';
-});
 
-// background click close
-adoptModal.addEventListener('click', (e) => {
-  if(e.target === adoptModal){
-    adoptModal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-});
-
-
-/* Donate-info */document.addEventListener("DOMContentLoaded", function () {
+/* Donate-info */
+document.addEventListener("DOMContentLoaded", function () {
   const tabs = document.querySelectorAll(".donation-tab");
   const panels = document.querySelectorAll(".donation-panel");
 
-  const openFormBtns = document.querySelectorAll(".open-form-btn");
   const formWrap = document.getElementById("donationFormWrap");
   const formTitle = document.getElementById("formTitle");
   const donationType = document.getElementById("donationType");
@@ -91,6 +100,9 @@ adoptModal.addEventListener('click', (e) => {
   const amountRadios = document.querySelectorAll("input[name='amount']");
   const customAmountRadio = document.getElementById("customAmountRadio");
   const customAmount = document.getElementById("customAmount");
+
+  // 후원 탭이 없는 페이지면 실행 중단
+  if (!tabs.length || !panels.length) return;
 
   // 탭 전환
   tabs.forEach(function (tab) {
@@ -108,11 +120,11 @@ adoptModal.addEventListener('click', (e) => {
       tab.classList.add("active");
 
       const targetPanel = document.getElementById(targetId);
+
       if (targetPanel) {
         targetPanel.classList.add("active");
       }
 
-      // 탭 바꾸면 폼 닫기
       if (formWrap) {
         formWrap.classList.remove("open");
       }
@@ -120,43 +132,58 @@ adoptModal.addEventListener('click', (e) => {
   });
 
   // 후원하기 버튼 클릭 시 폼 열기
-  openFormBtns.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      const title = btn.dataset.title;
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".open-form-btn");
 
-      if (formTitle) {
-        formTitle.textContent = title + " 후원 신청";
-      }
+    if (!btn) return;
 
-      if (donationType) {
-        donationType.value = title;
-      }
+    const title = btn.dataset.title || "후원";
 
-      if (formWrap) {
-        formWrap.classList.add("open");
+    if (formTitle) {
+      formTitle.textContent = title + " 후원 신청";
+    }
 
-        setTimeout(function () {
-          formWrap.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-        }, 200);
-      }
-    });
+    if (donationType) {
+      donationType.value = title;
+    }
+
+    if (formWrap) {
+      formWrap.classList.add("open");
+
+      setTimeout(function () {
+        formWrap.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 200);
+    }
   });
 
-  amountRadios.forEach(function (radio) {
-    radio.addEventListener("change", function () {
-      if (customAmountRadio.checked) {
-        customAmount.classList.add("show");
-        customAmount.setAttribute("required", "required");
-      } else {
-        customAmount.classList.remove("show");
-        customAmount.removeAttribute("required");
-        customAmount.value = "";
-      }
-    });
+  const donationBars = document.querySelectorAll(".donation-progress-bar span");
+
+  donationBars.forEach(function (bar) {
+    bar.style.setProperty("--w", bar.dataset.width);
+
+    setTimeout(function () {
+      bar.style.width = "var(--w)";
+    }, 100);
   });
+
+  // 기타 금액 선택
+  if (amountRadios.length && customAmountRadio && customAmount) {
+    amountRadios.forEach(function (radio) {
+      radio.addEventListener("change", function () {
+        if (customAmountRadio.checked) {
+          customAmount.classList.add("show");
+          customAmount.setAttribute("required", "required");
+        } else {
+          customAmount.classList.remove("show");
+          customAmount.removeAttribute("required");
+          customAmount.value = "";
+        }
+      });
+    });
+  }
 });
 /* Imfact-report */
 document.addEventListener("DOMContentLoaded", function () {
