@@ -111,19 +111,36 @@ document.addEventListener('DOMContentLoaded', () => {
 const openModal = document.querySelector("#openModal");
 const closeModal = document.querySelector("#closeModal");
 const reserveModal = document.querySelector("#reserveModal");
+const reserveForm = document.querySelector("#reserveForm");
+const toastSuccess = document.querySelector("#toastSuccess");
 
-if (openModal && closeModal && reserveModal) {
+if (openModal && reserveModal) {
   openModal.addEventListener("click", () => {
     reserveModal.classList.add("active");
+    document.body.style.overflow = "hidden";
   });
 
-  closeModal.addEventListener("click", () => {
+  document.querySelector("#closeModal").addEventListener("click", () => {
     reserveModal.classList.remove("active");
+    document.body.style.overflow = "";
   });
 
   reserveModal.addEventListener("click", (e) => {
     if (e.target === reserveModal) {
       reserveModal.classList.remove("active");
+      document.body.style.overflow = "";
     }
   });
 }
+
+if (reserveForm && toastSuccess) {
+  reserveForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    reserveModal.classList.remove("active");
+    document.body.style.overflow = "";
+    toastSuccess.classList.add("show");
+    setTimeout(() => toastSuccess.classList.remove("show"), 3500);
+    reserveForm.reset();
+  });
+}
+
