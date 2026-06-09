@@ -79,9 +79,8 @@ if (tabBtns.length > 0 && petMarquees.length > 0 && petTracks.length > 0) {
   petTracks.forEach((track) => {
     track.innerHTML += track.innerHTML;
   });
-
-  tabBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
       const target = btn.dataset.pet;
 
       tabBtns.forEach((item) => item.classList.remove("active"));
@@ -94,6 +93,18 @@ if (tabBtns.length > 0 && petMarquees.length > 0 && petTracks.length > 0) {
           marquee.classList.add("active");
         }
       });
+
+      // 아이콘 변경
+      const dogIcon = document.querySelector('[data-pet="dog"] img');
+      const catIcon = document.querySelector('[data-pet="cat"] img');
+
+      if(target === 'dog'){
+        dogIcon.src = 'image/bone_c.png';
+        catIcon.src = 'image/fish_g.png';
+      }else{
+        dogIcon.src = 'image/bone_g.png';
+        catIcon.src = 'image/fish_c.png';
+      }
     });
   });
 }

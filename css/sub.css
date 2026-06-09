@@ -2882,120 +2882,10 @@ icons
   }
 }
 /* Volunteer_________________________________________________________*/
-.volunteer-hero {
-  width: 100%;
-  height: 500px;
-  padding-top: 100px; 
-  position: relative;
-  overflow: hidden;
-  background: #F2EEE6;
-}
-
-.volunteer-hero-img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-}
-
-.volunteer-hero-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: right center; 
-  display: block;
-}
-
-.volunteer-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    #F2EEE6 0%,
-    #F2EEE6 35%,
-    rgba(242,238,230,0.9) 45%,
-    rgba(242,238,230,0.3) 65%,
-    transparent 85%
-  );
-  z-index: 2;
-  pointer-events: none;
-}
-
-.volunteer-hero-inner {
-  position: relative;
-  z-index: 3;
-  height: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 60px;
-  display: flex;
-  align-items: center; /* 텍스트가 세로 정중앙에 오도록 설정 */
-}
-
-.volunteer-hero-text {
-  max-width: 550px;
-  position: relative;
-}
-
-.volunteer-hero-label {
-  font-size: 14px;
-  font-weight: 700;
-  color: #727b84;
-  letter-spacing: 0.1em;
-  margin-bottom: 14px;
-}
-
-.volunteer-hero-text h1 {
-  font-size: 44px;
-  line-height: 1.2;
-  color: #222;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.volunteer-hero-label {
-  font-size: 14px;
-  font-weight: 700;
-  color: #727b84;
-  letter-spacing: 0.1em;
-  margin-bottom: 14px;
-}
-
-.volunteer-hero-text h1 strong {
-  font-weight: 700;
-  color: #364B44; 
-}
-
-.volunteer-hero-sub {
-  font-size: 17px;
-  color: #555;
-  margin-bottom: 24px;
-}
-
-.volunteer-hero-icon {
-  margin-top: 20px;
-}
-
-.hero-deco-icon {
-  width: 50px;
-  height: auto;
-  opacity: 0.3;
-  transition: 0.35s;
-}
-
-.volunteer-hero-icon:hover a > img {
-  transform: scale(1.1);
-}
-
-
 .volunteer-section {
-  padding: 70px 0 100px;
-  background: #fffdf8;
+  width: 100%;
+  padding: 70px 0 0;
   text-align: center;
-  font-family: 'Pretendard', sans-serif;
 }
 
 .volunteer-section h2 {
@@ -3009,7 +2899,6 @@ icons
 }
 
 .calendar-wrap {
-  max-width: 1280px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -3020,7 +2909,7 @@ icons
 
 /* 처음 상태: 달력 크게 중앙 */
 .calendar-box {
-  width: 900px;
+  width: 100%;
   background: #fff;
   border-radius: 24px;
   padding: 48px;
@@ -3028,22 +2917,18 @@ icons
   transition: all 0.6s ease;
 }
 
-/* 클릭 후: 달력이 왼쪽으로 작아짐 */
-.calendar-wrap.active {
+.volunteer-calender{
+  display: flex;
+}
+.volunteer-calender.active {
   gap: 32px;
 }
-
-.calendar-wrap.active .calendar-box {
-  width: 520px;
-  padding: 36px;
-}
-
 /* 일정 박스: 처음에는 완전히 숨김 */
 .schedule-box {
   width: 0;
   padding: 0;
   opacity: 0;
-  overflow: hidden;
+  display: none;
   transform: translateX(40px);
   background: #fff;
   border-radius: 24px;
@@ -3051,10 +2936,14 @@ icons
   text-align: left;
   transition: all 0.6s ease;
 }
-
+.volunteer-calender.active .calendar-box {
+  width: 100%;
+  padding: 36px;
+}
 /* 클릭 후 일정 박스 등장 */
-.calendar-wrap.active .schedule-box {
-  width: 620px;
+.volunteer-calender.active .schedule-box {
+  display: block;
+  width: 100%;
   padding: 56px 32px 28px;
   opacity: 1;
   transform: translateX(0);
@@ -3118,7 +3007,7 @@ icons
   transition: 0.25s;
 }
 
-.calendar-wrap.active .date {
+.volunteer-calender.active .date {
   width: 46px;
   height: 46px;
   font-size: 16px;
@@ -3426,8 +3315,7 @@ icons
 }
 
 .volunteer-notice {
-  max-width: 1000px;
-  margin: 100px auto 0;
+  margin: 100px 0 0;
   padding: 42px 36px;
   border: 2px solid #81C7B1;
   border-radius: 28px;
@@ -3487,141 +3375,57 @@ icons
 }
 
 /* Volunteer responsive */
-@media (max-width: 1200px) {
-  .volunteer-banner {
-    height: 520px;
-  }
-
-  .calendar-wrap {
-    max-width: 94%;
-  }
-
-  .calendar-box {
-    width: 100%;
-  }
-
-  .calendar-wrap.active {
+@media (max-width: 1024px) {
+  .calendar-wrap{
+    display: flex;
     flex-direction: column;
-    align-items: center;
   }
-
-  .calendar-wrap.active .calendar-box,
-  .calendar-wrap.active .schedule-box {
+  .volunteer-calender{
+    display: flex;
+  }
+  .volunteer-calender.active {
+    gap: 32px;
+  }
+  /* 일정 박스: 처음에는 완전히 숨김 */
+  .schedule-box {
+    width: 0;
+    padding: 0;
+    opacity: 0;
+    display: none;
+    transform: translateX(40px);
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    text-align: left;
+    transition: all 0.6s ease;
+  }
+  .volunteer-calender.active .calendar-box {
     width: 100%;
-    max-width: 720px;
+    padding: 36px;
   }
-}
-
-@media (max-width: 768px) {
-  .volunteer-banner {
-    height: 320px;
-    background-position: center;
-  }
-
-  .volunteer-section {
-    padding: 45px 16px 70px;
-  }
-
-  .volunteer-section h2 {
-    font-size: 28px;
-  }
-
-  .calendar-box {
+  /* 클릭 후 일정 박스 등장 */
+  .volunteer-calender.active .schedule-box {
+    display: block;
     width: 100%;
-    padding: 28px 18px;
-    border-radius: 20px;
+    padding: 56px 32px 28px;
+    opacity: 1;
+    transform: translateX(0);
+  }
   }
 
-  .calendar-header h3 {
-    font-size: 24px;
+@media (max-width: 375px) {
+  .volunteer-section{
+    padding: 30px 0 0;
   }
-
-  .calendar-header button {
-    font-size: 30px;
-  }
-
-  .weekdays {
-    margin: 24px 0 16px;
-    font-size: 14px;
-  }
-
-  .dates {
-    row-gap: 12px;
-  }
-
-  .date,
-  .calendar-wrap.active .date {
-    width: 40px;
-    height: 40px;
-    font-size: 14px;
-  }
-
-  .legend {
-    gap: 14px;
-    flex-wrap: wrap;
-    font-size: 13px;
-  }
-
-  .calendar-wrap.active .schedule-box {
-    padding: 32px 20px 24px;
-  }
-
-  .schedule-title {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .schedule-card {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 22px 18px;
-  }
-
-  .schedule-card button {
-    width: 100%;
-    margin-top: 8px;
-  }
-
-  .apply-modal-inner {
-    width: calc(100% - 32px);
-    padding: 32px 24px;
-  }
-
-  .submit-btn {
-    width: 100%;
-  }
-
-  .volunteer-notice {
-    margin-top: 60px;
-    padding: 30px 20px;
-  }
-
-  .volunteer-notice h3 {
-    font-size: 26px;
-  }
-
-  .volunteer-notice > p {
-    font-size: 15px;
-  }
-
-  .notice-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .volunteer-banner {
-    height: 240px;
-  }
-
   .volunteer-section h2 {
     font-size: 24px;
   }
-
+  .volunteer-calender{
+    display: flex;
+    flex-direction: column;
+  }
   .calendar-box {
-    padding: 24px 14px;
+    padding: 14px;
   }
 
   .calendar-header h3 {
@@ -3629,7 +3433,7 @@ icons
   }
 
   .date,
-  .calendar-wrap.active .date {
+  .volunteer-calender.active .date {
     width: 34px;
     height: 34px;
     font-size: 13px;
@@ -3651,6 +3455,15 @@ icons
 
   .notice-list {
     grid-template-columns: 1fr;
+  }
+  .legend span{
+    width: 50px;
+  }
+  .schedule-card{
+    flex-direction: column;
+  }
+  .volunteer-notice{
+    margin: 50px 0 0;
   }
 }
 
@@ -3757,9 +3570,8 @@ icons
 }
 
 .notice-section{
-  max-width:1200px;
-  margin:100px auto;
-  padding:80px 20px;
+  margin:0 auto;
+  padding:70px 20px 0;
 }
 
 .notice-tabs{
@@ -3887,7 +3699,22 @@ icons
 }
 
 @media(max-width:768px){
+  .notice-section{
+    margin:0 auto;
+    padding:50px 20px 0;
+  }
   .notice-grid{
     grid-template-columns:1fr;
+  }
+  .tab{
+    padding:12px 24px;
+    cursor:pointer;
+    border:1px solid #DAD7D1;
+    border-radius:999px;
+    background:var(--white);
+    color:#1F2A44;
+    font-size:14px;
+    font-weight:500;
+    transition:.3s;
   }
 }

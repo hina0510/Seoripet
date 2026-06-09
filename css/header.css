@@ -22,8 +22,7 @@
   justify-content:center;
 }
 .logo img{
-  width: 130px;
-  height: 80px;
+  width: 110px;
 }
 .pc-nav > ul{
   display:flex;

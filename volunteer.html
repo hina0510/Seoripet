@@ -18,106 +18,101 @@
 
   <header data-include="header.html"></header>
 
-  <section class="volunteer-hero">
-    <div class="volunteer-hero-img">
-      <img src="image/volunteer_banner.png" alt="강아지와 고양이">
-    </div>
-
-    <div class="volunteer-hero-inner">
-      <div class="volunteer-hero-text">
-        <p class="notice-hero-label">봉사</p>
-        <h1>오늘의 작은 나눔이<br><strong>아이들의 희망이 됩니다.</strong></h1>
-        <p class="volunteer-hero-sub">작은 관심이 큰 변화를 만듭니다.</p>
-        <div class="volunteer-hero-icon">
-          <a href="#none"><img src="image/aboutus_cil_animal_2.svg" alt="아이콘" class="hero-deco-icon"></a>
-        </div>
+  <main id="sub-main">
+    <div>
+      <div class="donate-main-banner">
+        <img src="image/volunteer_banner.png" alt="강아지와 고양이">
       </div>
     </div>
-  </section>
+    <div class="sub-inner">
+      <section class="volunteer-section">
+        <h2>🐾 봉사활동 일정</h2>
+        <p>날짜를 선택하면 해당 봉사 일정을 확인할 수 있어요.</p>
 
-  <section class="volunteer-section">
-    <h2>🐾 봉사활동 일정</h2>
-    <p>날짜를 선택하면 해당 봉사 일정을 확인할 수 있어요.</p>
+        <div class="calendar-wrap" >
+          <div class="volunteer-calender" id="vCalender">
+            <div class="calendar-box">
+              <div class="calendar-header">
+                <button id="prevMonth" type="button">‹</button>
+                <h3 id="monthTitle">2026년 6월</h3>
+                <button id="nextMonth" type="button">›</button>
+              </div>
+      
+              <div class="weekdays">
+                <span>일</span>
+                <span>월</span>
+                <span>화</span>
+                <span>수</span>
+                <span>목</span>
+                <span>금</span>
+                <span>토</span>
+              </div>
+      
+              <div class="dates" id="dates"></div>
+      
+              <div class="legend">
+                <div><i class="green"></i> <span>신청 가능</span></div>
+                <div><i class="orange"></i> <span>마감 임박</span></div>
+                <div><i class="gray"></i> <span>마감</span></div>
+              </div>
+            </div>
+      
+            <div class="schedule-box" id="scheduleBox">
+              <div class="schedule-title">
+                <h3 id="selectedDate">날짜를 선택해주세요</h3>
+                <span id="scheduleCount">총 0건의 일정</span>
+              </div>
+      
+              <div id="scheduleContent">
+                <div class="empty-schedule">
+                  날짜를 선택해주세요 🐾
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="volunteer-notice">
+            <h3>주의사항</h3>
+            <p>안전하고 즐거운 봉사활동을 위해 꼭 지켜주세요.</p>
 
-    <div class="calendar-wrap" id="calendarWrap">
-      <div class="calendar-box">
-        <div class="calendar-header">
-          <button id="prevMonth" type="button">‹</button>
-          <h3 id="monthTitle">2026년 6월</h3>
-          <button id="nextMonth" type="button">›</button>
-        </div>
-
-        <div class="weekdays">
-          <span>일</span>
-          <span>월</span>
-          <span>화</span>
-          <span>수</span>
-          <span>목</span>
-          <span>금</span>
-          <span>토</span>
-        </div>
-
-        <div class="dates" id="dates"></div>
-
-        <div class="legend">
-          <span><i class="green"></i> 신청 가능</span>
-          <span><i class="orange"></i> 마감 임박</span>
-          <span><i class="gray"></i> 마감</span>
-        </div>
-      </div>
-
-      <div class="schedule-box" id="scheduleBox">
-        <div class="schedule-title">
-          <h3 id="selectedDate">날짜를 선택해주세요</h3>
-          <span id="scheduleCount">총 0건의 일정</span>
-        </div>
-
-        <div id="scheduleContent">
-          <div class="empty-schedule">
-            날짜를 선택해주세요 🐾
+            <ul class="notice-list">
+              <li>
+                <span>01</span>
+                <strong>위생 수칙 준수</strong>
+                <p>봉사 전후 손 소독을 해주세요.</p>
+              </li>
+              <li>
+                <span>02</span>
+                <strong>반려동물 동반 제한</strong>
+                <p>보호소 내 반려동물 동반은 제한됩니다.</p>
+              </li>
+              <li>
+                <span>03</span>
+                <strong>안내에 따라 행동</strong>
+                <p>담당자의 안내를 따라주세요.</p>
+              </li>
+              <li>
+                <span>04</span>
+                <strong>조용히 배려하기</strong>
+                <p>큰 소리나 갑작스러운 행동은 삼가주세요.</p>
+              </li>
+              <li>
+                <span>05</span>
+                <strong>임의 급여 금지</strong>
+                <p>허가 없이 간식을 주지 마세요.</p>
+              </li>
+              <li>
+                <span>06</span>
+                <strong>취소 시 연락</strong>
+                <p>불참 시 최소 1일 전 연락해주세요.</p>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
+      </section>
     </div>
+  </main>
 
-    <div class="volunteer-notice">
-  <h3>주의사항</h3>
-  <p>안전하고 즐거운 봉사활동을 위해 꼭 지켜주세요.</p>
-
-  <ul class="notice-list">
-    <li>
-      <span>01</span>
-      <strong>위생 수칙 준수</strong>
-      <p>봉사 전후 손 소독을 해주세요.</p>
-    </li>
-    <li>
-      <span>02</span>
-      <strong>반려동물 동반 제한</strong>
-      <p>보호소 내 반려동물 동반은 제한됩니다.</p>
-    </li>
-    <li>
-      <span>03</span>
-      <strong>안내에 따라 행동</strong>
-      <p>담당자의 안내를 따라주세요.</p>
-    </li>
-    <li>
-      <span>04</span>
-      <strong>조용히 배려하기</strong>
-      <p>큰 소리나 갑작스러운 행동은 삼가주세요.</p>
-    </li>
-    <li>
-      <span>05</span>
-      <strong>임의 급여 금지</strong>
-      <p>허가 없이 간식을 주지 마세요.</p>
-    </li>
-    <li>
-      <span>06</span>
-      <strong>취소 시 연락</strong>
-      <p>불참 시 최소 1일 전 연락해주세요.</p>
-    </li>
-  </ul>
-    </div>
-  </section>
+  
 
   <div class="apply-modal" id="applyModal">
     <div class="apply-modal-inner">

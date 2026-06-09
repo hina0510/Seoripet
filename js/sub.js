@@ -398,7 +398,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /* Volunteer */
 document.addEventListener("DOMContentLoaded", function () {
   const datesEl = document.getElementById("dates");
-  const calendarWrap = document.getElementById("calendarWrap");
+  const vCalender = document.getElementById("vCalender");
   const selectedDate = document.getElementById("selectedDate");
   const scheduleCount = document.getElementById("scheduleCount");
   const scheduleContent = document.getElementById("scheduleContent");
@@ -506,7 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         btn.classList.add("selected");
 
-        calendarWrap.classList.add("active");
+        vCalender.classList.add("active");
 
         selectedDate.textContent =
           `${month + 1}월 ${day}일 ${weekNames[dayOfWeek]}`;
@@ -585,7 +585,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentYear--;
     }
 
-    calendarWrap.classList.remove("active");
+    vCalender.classList.remove("active");
 
     renderCalendar(currentYear, currentMonth);
   });
@@ -600,7 +600,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentYear++;
     }
 
-    calendarWrap.classList.remove("active");
+    vCalender.classList.remove("active");
 
     renderCalendar(currentYear, currentMonth);
   });
