@@ -149,7 +149,46 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+//Adopt-process
+/* Adopt Process - 스크롤 슬라이드인 */
+document.addEventListener("DOMContentLoaded", function () {
+  const slideItems = document.querySelectorAll(".slide-item");
 
+  if (!slideItems.length) return;
+
+  const slideObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      } else {
+        entry.target.classList.remove("show");
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: "0px 0px -60px 0px"
+  });
+
+  slideItems.forEach(function (item) {
+    slideObserver.observe(item);
+  });
+});
+
+//side tab
+function setSubMenuActive() {
+  const currentPage = window.location.pathname.split("/").pop();
+  const subBtns = document.querySelectorAll(".sub-btn");
+
+  subBtns.forEach(function (btn) {
+    btn.classList.remove("active");
+    const href = btn.getAttribute("href");
+    if (href === currentPage) {
+      btn.classList.add("active");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", setSubMenuActive);
 
 /* Donate-info */
 document.addEventListener("DOMContentLoaded", function () {
@@ -658,3 +697,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+const cards = document.querySelectorAll('.notice-card');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+cards.forEach((card) => {
+    observer.observe(card);
+});
+
