@@ -2901,6 +2901,7 @@ icons
 .calendar-wrap {
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: stretch;
   gap: 0;
