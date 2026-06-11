@@ -150,6 +150,41 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 //Adopt-process
+/* Adopt Process - 상단 아이콘 glow 순차 이동 */
+document.addEventListener("DOMContentLoaded", function () {
+  const processItems = document.querySelectorAll(".process-item");
+
+  if (!processItems.length) return;
+
+  let currentIndex = 0;
+
+  // 초기화
+  processItems.forEach(function (item) {
+    item.classList.remove("active-glow");
+  });
+
+  // 첫번째 활성화
+  processItems[currentIndex].classList.add("active-glow");
+
+  setInterval(function () {
+
+    // 이전 glow 제거
+    processItems[currentIndex].classList.remove("active-glow");
+
+    // 다음 index
+    currentIndex++;
+
+    if (currentIndex >= processItems.length) {
+      currentIndex = 0;
+    }
+
+    // 다음 glow 추가
+    processItems[currentIndex].classList.add("active-glow");
+
+  }, 1800);
+});
+
+
 /* Adopt Process - 스크롤 슬라이드인 */
 document.addEventListener("DOMContentLoaded", function () {
   const slideItems = document.querySelectorAll(".slide-item");

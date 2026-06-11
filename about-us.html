@@ -33,7 +33,7 @@
       </div>
     </section>
 
-    <div class="sub-inner">
+    <main class="sub-inner">
       <aside class="sub-menu">
         <h2>ABOUT US</h2>
         <p>서리펫을 소개합니다</p>
@@ -89,8 +89,8 @@
           <!-- 오른쪽: 브랜드 의미 카드 -->
           <div class="intro-desc-card">
             <h3>서리(瑞里) :</h3>
-            <p class="intro-meaning">순우리말로 처음 맺은 사랑의 순수함과<br>아침 이슬처럼 맑은 감성을 뜻하는 말</p>
-            <p class="intro-body">서리펫은 맑고 따뜻한 마음으로 반려동물과 사람이 건강한<br>가족이 되는 순간을 만들어 갑니다.</p>
+            <p class="intro-meaning">순우리말로 처음 맺은 사랑의 순수함과 <br class="about-mob-only">아침 이슬처럼 맑은 감성을 뜻하는 말</p>
+            <p class="intro-body">서리펫은 맑고 따뜻한 마음으로 반려동물과 사람이 건강한 <br class="about-mob-only">가족이 되는 순간을 만들어 갑니다.</p>
           </div>
         </div>
 
@@ -143,10 +143,13 @@
 
         <!-- ===== 02. 지속적인 후원 ===== -->
         <div class="about-section">
-          <div class="about-num">02</div>
-          <h2 class="about-title">서리펫의<br>지속적인 후원</h2>
-          <p class="about-subtitle">유기동물들이 건강하고 행복한 삶을<br>살 수 있도록 무준히 지원하고 있습니다.</p>
+          <div class="about-section-text">
+            <div class="about-num">02</div>
+            <h2 class="about-title">서리펫의<br>지속적인 후원</h2>
+            <p class="about-subtitle">유기동물들이 건강하고 행복한 삶을<br>살 수 있도록 무준히 지원하고 있습니다.</p>
+          </div>
           <a href="donate-info.html" class="about-cta-btn">후원하기 →</a>
+          <!-- <div style="clear:both;"></div> -->
         </div>
 
         <div class="support-wrap scroll-fade">
@@ -217,7 +220,7 @@
           <div class="about-section">
             <div class="about-num">03</div>
             <h2 class="about-title">한국동물복지연구소<br>공식 인증 안심처</h2>
-            <p class="about-subtitle">서리펫은 체계적이고 안정적인<br>운영 관리 시스템 및 동물 복지를 위한<br>환경조성으로 한국동물복지연구소의<br>심의를 거쳐</p>
+            <p class="about-subtitle">서리펫은 체계적이고 안정적인 <br class="about-mob-only">운영 관리 시스템 및 동물 복지를 위한 <br class="about-mob-only">환경조성으로 한국동물복지연구소의 <br class="about-mob-only">심의를 거쳐</p>
             <p class="about-subtitle"><strong>2023년 3월<br>공식인증 브랜드가 되었습니다.</strong></p>
           </div>
 
@@ -238,9 +241,10 @@
 
         </div>
       </section>
-
-  <!-- <footer data-include="footer.html" id="footer">
-  </footer> -->
+    </main>
+  </main>
+    <footer data-include="footer.html" id="footer"></footer>
+  
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><!-- Supabase CDN -->
 	<script src="js/includeHTML.js"></script>
 	<script src="js/includeRouter.js"></script>

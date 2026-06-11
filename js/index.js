@@ -155,3 +155,20 @@ if (reserveForm && toastSuccess) {
   });
 }
 
+// s2 스크롤 페이드업
+const s2Text = document.querySelector(".s2-text");
+const s2Video = document.querySelector(".s2-video-wrap");
+
+if (s2Text && s2Video) {
+  const s2Observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        s2Observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  s2Observer.observe(s2Text);
+  s2Observer.observe(s2Video);
+}

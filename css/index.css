@@ -199,6 +199,26 @@ main{
   .s2-deco { width: 90px; bottom: -20px; right: -10px; }
 }
 
+/* s2 스크롤 페이드업 */
+.s2-text,
+.s2-video-wrap {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.1s ease, transform 1.1s ease;
+}
+
+.s2-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.s2-video-wrap.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s; /* 영상이 텍스트보다 살짝 늦게 등장 */
+}
+
+
 
 /* Scroll Animation */
 #s3{
