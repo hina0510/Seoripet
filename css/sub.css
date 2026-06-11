@@ -25,9 +25,9 @@ ABOUT US - Hero Banner
 ============================== */
 .about-hero {
   width: 100%;
-  height: 500px;
+  height: 400px;
   
-  padding-top: 100px; 
+  /* padding-top: 100px;  */
   position: relative;
   overflow: hidden;
   background: #F2EEE6;
@@ -35,7 +35,7 @@ ABOUT US - Hero Banner
 
 .about-hero-img {
   position: absolute;
-  top: 0;
+  top: -100px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -57,16 +57,15 @@ ABOUT US - Hero Banner
   background: linear-gradient(
     to right,
     #F2EEE6 0%,
-    #F2EEE6 35%,
-    rgba(242,238,230,0.9) 45%,
-    rgba(242,238,230,0.3) 65%,
-    transparent 85%
+    rgba(242,238,230,0.85) 15%,
+    rgba(242,238,230,0.4) 28%,
+    rgba(242,238,230,0.1) 40%,
+    transparent 55%
   );
   z-index: 2;
   pointer-events: none;
 }
 
-/* 텍스트 레이어 컨테이너 */
 .about-hero-inner {
   position: relative;
   z-index: 3;
@@ -75,7 +74,7 @@ ABOUT US - Hero Banner
   margin: 0 auto;
   padding: 0 60px;
   display: flex;
-  align-items: center; /* 텍스트가 세로 정중앙에 오도록 설정 */
+  align-items: center;
 }
 
 .about-hero-text {
@@ -92,16 +91,15 @@ ABOUT US - Hero Banner
 }
 
 .about-hero-text h1 {
-  font-size: 44px;
+  font-size: 48px;
   line-height: 1.2;
   color: #222;
   margin-bottom: 20px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-/* 텍스트 중 강조 부분 컬러를 서리펫 시그니처 딥그린으로 처리 */
 .about-hero-text h1 strong {
-  font-weight: 700;
+  font-weight: 800;
   color: #364B44; 
 }
 
@@ -109,9 +107,10 @@ ABOUT US - Hero Banner
   font-size: 17px;
   color: #555;
   margin-bottom: 24px;
+  font-weight: 500;
 }
 
-.about-hero-icon {
+/* .about-hero-icon {
   margin-top: 20px;
 }
 
@@ -124,7 +123,7 @@ ABOUT US - Hero Banner
 
 .about-hero-icon:hover a>img {
   transform: scale(1.1);
-}
+} */
 
 /* ==============================
 공통: 섹션 번호 + 타이틀
@@ -1566,6 +1565,93 @@ ADOPT-PROCESS.HTML 전용
   border-radius:20px;
 }
 
+.adopt-hero {
+  width: 100%;
+  height: 400px;
+  
+  /* padding-top: 100px;  */
+  position: relative;
+  overflow: hidden;
+  background: #F2EEE6;
+}
+
+.adopt-hero-img {
+  position: absolute;
+  top: -150px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.adopt-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center; 
+  display: block;
+}
+
+.adopt-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #F2EEE6 0%,
+    rgba(242,238,230,0.85) 15%,
+    rgba(242,238,230,0.4) 28%,
+    rgba(242,238,230,0.1) 40%,
+    transparent 55%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.adopt-hero-inner {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+}
+
+.adopt-hero-text {
+  max-width: 550px;
+  position: relative;
+}
+
+.adopt-hero-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #727b84;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+}
+
+.adopt-hero-text h1 {
+  font-size: 48px;
+  line-height: 1.2;
+  color: #222;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.adopt-hero-text h1 strong {
+  font-weight: 800;
+  color: #364B44; 
+}
+
+.adopt-hero-sub {
+  font-size: 17px;
+  color: #555;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
 /* =========================
 step
 ========================= */
@@ -1611,7 +1697,7 @@ step
 
 .step-text span{
   margin-bottom:12px;
-  color:#A7CB8B;
+  color:#81C7B1;
   font-size:32px;
   font-weight:700;
 }
@@ -1719,6 +1805,7 @@ icons
   width:150px;
   flex:none;
   text-align:center;
+  transition: all 0.4s ease;
 }
 
 /* circle */
@@ -1730,12 +1817,10 @@ icons
   border-radius:50%;
   background:#fff;
   border:1px solid #E3DED6;
-
   display:flex;
   justify-content:center;
   align-items:center;
-
-  transition:.4s;
+  transition: all 0.4s ease;
 }
 
 .process-circle img{
@@ -1829,8 +1914,8 @@ icons
 }
 
 .process-bottom-banner > p strong {
-  color: #32443D;
-  font-weight: 800;
+  color: #81C7B1;
+  font-weight: 700;
 }
 
 .process-bottom-icons {
@@ -2901,6 +2986,7 @@ icons
 .calendar-wrap {
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: stretch;
   gap: 0;
