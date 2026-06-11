@@ -689,26 +689,9 @@ Brand Strategy
 /* ==============================
 Responsive
 ============================== */
-@media (max-width: 1024px) {
-  .about-hero-text h1 {
-    font-size: 40px;
-  }
-  .about-title {
-    font-size: 30px;
-  }
-  .strategy-title {
-    font-size: 28px;
-  }
-  .cert-section-wrap{
-    flex-direction: column;
-  }
-  .about-mob-only{display: none;}
-}
-
-@media (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .about-hero {
     height: 320px;
-    margin-top: 76px; /* 모바일 헤더 높이 */
   }
 
   .about-hero::before {
@@ -730,10 +713,12 @@ Responsive
     font-size: 28px;
   }
 
-  .about-hero-text {
-    max-width: 280px;
+  .about-title {
+    font-size: 30px;
   }
-
+  .strategy-title {
+    font-size: 28px;
+  }
 
   .intro-wrap {
     flex-direction: column;
@@ -747,23 +732,8 @@ Responsive
     padding: 40px 24px;
   }
 
-  .strategy-values {
-    flex-direction: column;
-    gap: 24px;
-  }
-
   .strategy-title {
     font-size: 24px;
-  }
-
-  .support-wrap {
-    flex-direction: column;
-  }
-
-  .support-imgs {
-    width: 100%;
-    flex-direction: row;
-    height: 180px;
   }
 
   .nuribom-banner {
@@ -776,20 +746,6 @@ Responsive
     display: none;
   }
 
-  .cert-section-wrap {
-    flex-direction: column;
-  }
-
-  .cert-section-wrap .about-section {
-    width: 100%;
-  }
-
-  .cert-wrap {
-    flex-direction: column;
-    padding: 32px 24px;
-    gap: 30px;
-  }
-
   .cert-quote p {
     font-size: 22px;
   }
@@ -797,10 +753,37 @@ Responsive
   .about-title {
     font-size: 26px;
   }
-
   .about-mob-only{display: none;}
 }
-
+@media screen and (max-width: 375px) {
+  .strategy-values {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .support-wrap {
+    flex-direction: column;
+  }
+  .support-imgs {
+    width: 100%;
+    flex-direction: row;
+    height: 180px;
+  }
+  .cert-section-wrap{
+    flex-direction: column;
+  }
+  .about-mob-only{display: none;}
+  .cert-section-wrap {
+    flex-direction: column;
+  }
+  .cert-wrap {
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 30px;
+  }
+  .cert-section-wrap .about-section {
+    width: 100%;
+  }
+}
 /* ==============================
 about us 스크롤업
 ============================== */
@@ -1085,14 +1068,12 @@ about us 스크롤업
 /* ==============================
 Responsive - visit-us
 ============================== */
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .visit-info {
     width: 280px;
     padding: 28px;
   }
-}
 
-@media (max-width: 768px) {
   .visit-card-top {
     flex-direction: column;
   }
@@ -1435,7 +1416,7 @@ Responsive - visit-us
   color:#333;
 }
 /* responsive */
-@media(max-width:1024px){
+@media screen and (max-width:1024px){
   .adopt-tabs{
     gap:18px;
   }
@@ -1444,8 +1425,6 @@ Responsive - visit-us
     height: 40px;
   }
   .adopt-card-list{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:30px;
   }
   .adopt-modal{
@@ -1510,7 +1489,7 @@ Responsive - visit-us
     font-size:20px;
   }
 }
-@media(max-width:375px){
+@media screen and (max-width:375px){
   .adopt-tabs{
     gap:24px;
   }
@@ -1976,13 +1955,18 @@ icons
   word-break: keep-all;
 }
 
-@media(max-width:1024px){
+@media screen and (max-width:1024px){
   .process-section{
     display: flex;
     flex-direction: column;
     justify-content:center;
     align-items: center;
+    padding: 0 0 40px;
   }
+  .process-title h2 {
+    font-size: 32px;
+  }
+
   .process-icons{
     max-width: 510px;
     flex-wrap:wrap;
@@ -1991,6 +1975,7 @@ icons
   .process-icons > .process-line:nth-child(6){
     display:none;
   }
+
   .process-step,
   .process-step.reverse{
     flex-direction:column;
@@ -2001,6 +1986,25 @@ icons
     width:100%;
   }
 
+  .step-image{
+    min-height:0;
+  }
+  .step-text{
+    padding:20px;
+  }
+  .step-text span,
+  .step-text h3{
+    font-size: 24px;
+  }
+  .step-text p{
+    font-size: 16px;
+  }
+  .process-detail-title{
+    margin-bottom: 40px;
+  }
+  .process-detail-title h2 {
+    font-size: 32px;
+  }
   .process-bottom-banner {
     padding: 40px 20px;
     margin-bottom: 0;
@@ -2021,62 +2025,9 @@ icons
     flex-wrap:wrap;
     gap: 30px;
   }
-  .adopt-hero-text h1 {
-    font-size: 40px;
-  }
-  .adopt-title {
-    font-size: 30px;
-  }
-}
-
-@media(max-width:768px){
-  .process-section{
-    padding: 0 0 40px;
-  }
-  .process-title h2 {
-    font-size: 32px;
-  }
-  .process-icons{
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:20px 0;
-  }
-
-  .process-item{
-    width:45%;
-  }
-
-  .process-line{
-    display:none;
-  }
-  .step-image{
-    min-height:0;
-  }
-  .step-text{
-    padding:20px;
-  }
-  .step-text span,
-  .step-text h3{
-    font-size: 24px;
-  }
-  .step-text p{
-    font-size: 16px;
-  }
-  .process-detail-title{
-    margin-bottom: 40px;
-  }
-  .process-detail-title h2 {
-    font-size: 32px;
-  }
-  
-  .process-bottom-icons{
-    gap:20px;
-    flex-wrap:wrap;
-  }
 
   .adopt-hero {
-    height: 320px;
-    margin-top: 76px; /* 모바일 헤더 높이 */
+    height: 320px; /* 모바일 헤더 높이 */
   }
 
   .adopt-hero::before {
@@ -2101,8 +2052,15 @@ icons
   .adopt-hero-text {
     max-width: 280px;
   }
+  .adopt-title {
+    font-size: 30px;
+  }
 }
-
+@media screen and (max-width:375px){
+  .process-line{
+    display:none;
+  }
+}
 /* Donate-info */
 #donation-content{
   width:100%;
@@ -2233,7 +2191,7 @@ icons
   justify-content:flex-end;
 }
 .open-form-btn,
-.submit-btn{
+.donate-submit-btn{
   width:180px;
   height:54px;
   border:0;
@@ -2247,7 +2205,7 @@ icons
 }
 
 .open-form-btn:hover,
-.submit-btn:hover{
+.donate-submit-btn:hover{
   background:#6EA8DF;
 }
 
@@ -2354,6 +2312,11 @@ icons
 
 .custom-amount.show{
   display:block;
+}
+
+input,
+textarea {
+  font-family: 'Pretendard', sans-serif;
 }
 
 /* modal */
@@ -2698,6 +2661,7 @@ icons
   font-size:22px;
   margin-bottom:10px;
 }
+.report-message br.hd{display: none;}
 
 .report-message p{
   color:#555;
@@ -2761,7 +2725,6 @@ icons
   }
   .report-visual{
     padding:20px 24px;
-    flex-direction:column;
     gap:30px;
     align-items:flex-start;
   }
@@ -2780,7 +2743,6 @@ icons
   }
 
   .report-summary{
-    grid-template-columns:repeat(2,1fr);
     padding: 15px;
     gap: 20px;
   }
@@ -2880,7 +2842,9 @@ icons
     height:48px;
     font-size:16px;
   }
-
+  .donate-submit-btn{
+    margin: 0 0 0;
+  }
   .donation-form-wrap.open{
     max-height:1050px;
   }
@@ -3010,17 +2974,25 @@ icons
     padding:20px 10px;
   }
   .bar-chart{padding:30px 0 0;}
+  .month em{
+    font-style:normal;
+    color:#555;
+    font-size:11px;
+  }
   .report-message{
     margin:24px;
     flex-direction:column;
     gap:20px;
-    align-items:flex-start;
+    padding: 30px;
+    align-items:flex-end;
   }
+  .report-message br.hd{display: block;}
+  .report-message p{font-size:14px}
 }
 /* Volunteer_________________________________________________________*/
 .volunteer-section {
   width: 100%;
-  padding: 70px 0 0;
+  padding: 70px 20px 0;
   text-align: center;
 }
 
@@ -3512,7 +3484,7 @@ icons
 }
 
 /* Volunteer responsive */
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .calendar-wrap{
     display: flex;
     flex-direction: column;
@@ -3550,7 +3522,7 @@ icons
   }
   }
 
-@media (max-width: 375px) {
+@media screen and (max-width: 375px) {
   .volunteer-section{
     padding: 30px 0 0;
   }
@@ -3829,13 +3801,13 @@ icons
   box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
-@media(max-width:900px){
+@media screen and (max-width:1024px){
   .notice-grid{
     grid-template-columns:repeat(2,1fr);
   }
 }
 
-@media(max-width:768px){
+@media screen and (max-width:375px){
   .notice-section{
     margin:0 auto;
     padding:50px 20px 0;
