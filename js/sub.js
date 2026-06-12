@@ -1,3 +1,10 @@
+const SUPABASE_URL = "https://igkdirbivpzdnkyswelx.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlna2RpcmJpdnB6ZG5reXN3ZWx4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyMTAzNjAsImV4cCI6MjA5Njc4NjM2MH0.WhQ1nPE2rOrsuJLMYyBz7nlnPq3WBCaIcbAvxTbBprw";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 //side tab
 function setSubMenuActive() {
   const currentPage = window.location.pathname.split("/").pop();
@@ -58,10 +65,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  visitCloseBtn.addEventListener("click", () => {
-    visitModal.classList.remove("active");
-    document.body.style.overflow = "";
-  });
+  if (visitCloseBtn) {
+    visitCloseBtn.addEventListener("click", () => {
+      visitModal.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+  }
 
   visitModal.addEventListener("click", (e) => {
     if (e.target === visitModal) {
@@ -70,14 +79,45 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  visitForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    visitModal.classList.remove("active");
-    document.body.style.overflow = "";
-    visitToast.classList.add("show");
-    setTimeout(() => visitToast.classList.remove("show"), 3500);
-    visitForm.reset();
-  });
+  if (visitForm) {
+    visitForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const textInputs = visitForm.querySelectorAll('input[type="text"]');
+
+      const data = {
+        name: textInputs[0]?.value,
+        phone: visitForm.querySelector('input[type="tel"]')?.value,
+        purpose: visitForm.querySelector('input[name="purpose"]:checked')?.value,
+        breed: textInputs[1]?.value,
+        branch: textInputs[2]?.value,
+        message: visitForm.querySelector("textarea")?.value,
+        visit_date: visitForm.querySelector('input[type="date"]')?.value || null
+      };
+
+      const { error } = await supabaseClient
+        .from("visit_reservations")
+        .insert([data]);
+
+      if (error) {
+        alert("방문예약 저장 중 오류가 발생했습니다.");
+        console.error(error);
+        return;
+      }
+
+      visitModal.classList.remove("active");
+      document.body.style.overflow = "";
+
+      if (visitToast) {
+        visitToast.classList.add("show");
+        setTimeout(() => visitToast.classList.remove("show"), 3500);
+      } else {
+        alert("방문예약이 완료되었습니다.");
+      }
+
+      visitForm.reset();
+    });
+  }
 });
 
 
@@ -119,19 +159,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const adoptModal = document.getElementById("adoptModal");
   const adoptCloseBtn = document.getElementById("adoptCloseBtn");
   const applyBtns = document.querySelectorAll(".apply-btn");
+  const adoptForm = document.querySelector(".adopt-form");
 
   // 입양 모달이 없는 페이지면 실행 안 함
   if (!adoptModal) return;
 
   // 신청 버튼
-  if (applyBtns.length) {
-    applyBtns.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        adoptModal.classList.add("active");
-        document.body.style.overflow = "hidden";
-      });
+  applyBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      adoptModal.classList.add("active");
+      document.body.style.overflow = "hidden";
     });
-  }
+  });
 
   // 닫기 버튼
   if (adoptCloseBtn) {
@@ -148,6 +187,47 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.style.overflow = "";
     }
   });
+
+  // 입양 신청 저장
+  if (adoptForm) {
+    adoptForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const textInputs = adoptForm.querySelectorAll('input[type="text"]');
+
+      const selectedType =
+        adoptForm.querySelector('input[name="adoptType"]:checked');
+
+      const data = {
+        name: textInputs[0]?.value,
+        phone: adoptForm.querySelector('input[type="tel"]')?.value,
+        adopt_type: selectedType
+          ? selectedType.parentElement.textContent.trim()
+          : null,
+        breed: textInputs[1]?.value,
+        branch: textInputs[2]?.value,
+        message: adoptForm.querySelector("textarea")?.value,
+        visit_date: adoptForm.querySelector(".date-input")?.value || null
+      };
+
+      const { error } = await supabaseClient
+        .from("adopt_applications")
+        .insert([data]);
+
+      if (error) {
+        alert("입양 신청 저장 중 오류가 발생했습니다.");
+        console.error(error);
+        return;
+      }
+
+      alert("입양/임시보호 신청이 완료되었습니다.");
+
+      adoptForm.reset();
+
+      adoptModal.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+  }
 });
 //Adopt-process
 /* Adopt Process - 상단 아이콘 glow 순차 이동 */
@@ -363,11 +443,52 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (donationForm && donationModal) {
-    donationForm.addEventListener("submit", function (e) {
+    donationForm.addEventListener("submit", async function (e) {
       e.preventDefault();
+
+      const selectedAmount = donationForm.querySelector('input[name="amount"]:checked');
+
+      let amount = 0;
+
+      if (selectedAmount?.value === "custom") {
+        amount = Number(customAmount.value);
+      } else {
+        amount = Number(selectedAmount?.value);
+      }
+
+      if (!amount || amount <= 0) {
+        alert("후원 금액을 입력해주세요.");
+        return;
+      }
+
+      const data = {
+        donation_type: donationType?.value,
+        name: document.getElementById("userName")?.value,
+        phone: document.getElementById("userPhone")?.value,
+        email: document.getElementById("userEmail")?.value,
+        amount: amount,
+        message: document.getElementById("donate-message")?.value
+      };
+
+      const { error } = await supabaseClient
+        .from("donations")
+        .insert([data]);
+
+      if (error) {
+        alert("후원 신청 저장 중 오류가 발생했습니다.");
+        console.error(error);
+        return;
+      }
 
       donationModal.classList.add("show");
       document.body.style.overflow = "hidden";
+
+      donationForm.reset();
+
+      if (customAmount) {
+        customAmount.classList.remove("show");
+        customAmount.removeAttribute("required");
+      }
     });
   }
 
@@ -441,18 +562,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevMonth = document.getElementById("prevMonth");
   const nextMonth = document.getElementById("nextMonth");
 
-  // 모달
   const applyModal = document.getElementById("applyModal");
   const closeModal = document.getElementById("closeModal");
   const modalDate = document.getElementById("modalDate");
   const modalTitle = document.getElementById("modalTitle");
+
+  const volunteerApplyForm = document.getElementById("volunteerApplyForm");
+  const applyDate = document.getElementById("applyDate");
+  const applyTitle = document.getElementById("applyTitle");
+  const applyTime = document.getElementById("applyTime");
+  const applicantName = document.getElementById("applicantName");
+  const applicantPhone = document.getElementById("applicantPhone");
 
   if (!datesEl) return;
 
   let currentYear = 2026;
   let currentMonth = 5;
 
-  const weekNames = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
+  const weekNames = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
 
   const scheduleData = {
     "2026-06-14": [
@@ -475,7 +602,6 @@ document.addEventListener("DOMContentLoaded", function () {
         apply: 3
       }
     ],
-
     "2026-06-27": [
       {
         type: "green-line",
@@ -496,14 +622,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderCalendar(year, month) {
     datesEl.innerHTML = "";
 
-    monthTitle.textContent =
-      `${year}년 ${month + 1}월`;
+    if (monthTitle) {
+      monthTitle.textContent = `${year}년 ${month + 1}월`;
+    }
 
-    const firstDay =
-      new Date(year, month, 1).getDay();
-
-    const lastDate =
-      new Date(year, month + 1, 0).getDate();
+    const firstDay = new Date(year, month, 1).getDay();
+    const lastDate = new Date(year, month + 1, 0).getDate();
 
     for (let i = 0; i < firstDay; i++) {
       const empty = document.createElement("button");
@@ -512,39 +636,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     for (let day = 1; day <= lastDate; day++) {
-
       const btn = document.createElement("button");
-
-      const dayOfWeek =
-        new Date(year, month, day).getDay();
-
-      const dateKey =
-        getDateKey(year, month, day);
+      const dayOfWeek = new Date(year, month, day).getDay();
+      const dateKey = getDateKey(year, month, day);
 
       btn.className = "date";
       btn.textContent = day;
 
       if (dayOfWeek === 0) btn.classList.add("sun");
       if (dayOfWeek === 6) btn.classList.add("sat");
-
-      if (scheduleData[dateKey]) {
-        btn.classList.add("available");
-      }
+      if (scheduleData[dateKey]) btn.classList.add("available");
 
       btn.addEventListener("click", function () {
-
-        document
-          .querySelectorAll(".date")
-          .forEach(date => {
-            date.classList.remove("selected");
-          });
+        document.querySelectorAll(".date").forEach(date => {
+          date.classList.remove("selected");
+        });
 
         btn.classList.add("selected");
 
-        vCalender.classList.add("active");
+        if (vCalender) {
+          vCalender.classList.add("active");
+        }
 
-        selectedDate.textContent =
-          `${month + 1}월 ${day}일 ${weekNames[dayOfWeek]}`;
+        if (selectedDate) {
+          selectedDate.textContent = `${month + 1}월 ${day}일 ${weekNames[dayOfWeek]}`;
+        }
 
         renderSchedule(dateKey);
       });
@@ -554,13 +670,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function renderSchedule(dateKey) {
-
     const schedules = scheduleData[dateKey];
 
-    if (!schedules) {
+    if (!scheduleCount || !scheduleContent) return;
 
-      scheduleCount.textContent =
-        "총 0건의 일정";
+    if (!schedules) {
+      scheduleCount.textContent = "총 0건의 일정";
 
       scheduleContent.innerHTML = `
         <div class="empty-schedule">
@@ -571,114 +686,135 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    scheduleCount.textContent =
-      `총 ${schedules.length}건의 일정`;
+    scheduleCount.textContent = `총 ${schedules.length}건의 일정`;
 
-    scheduleContent.innerHTML =
-      schedules.map(item => `
-        <div class="schedule-card ${item.type}">
+    scheduleContent.innerHTML = schedules.map(item => `
+      <div class="schedule-card ${item.type}">
+        <div class="icon">${item.icon}</div>
 
-          <div class="icon">
-            ${item.icon}
-          </div>
-
-          <div class="info">
-            <strong>${item.title}</strong>
-
-            <p>${item.time}</p>
-
-            <p>${item.desc}</p>
-
-            <small>
-              모집인원 ${item.people}명 ·
-              신청인원 ${item.apply}명
-            </small>
-          </div>
-
-          <button
-            type="button"
-            class="apply-btn"
-            data-date="${dateKey}"
-            data-title="${item.title}"
-            data-time="${item.time}"
-          >
-            신청하기
-          </button>
-          
-
+        <div class="info">
+          <strong>${item.title}</strong>
+          <p>${item.time}</p>
+          <p>${item.desc}</p>
+          <small>
+            모집인원 ${item.people}명 · 신청인원 ${item.apply}명
+          </small>
         </div>
-      `).join("");
+
+        <button
+          type="button"
+          class="apply-btn"
+          data-date="${dateKey}"
+          data-title="${item.title}"
+          data-time="${item.time}"
+        >
+          신청하기
+        </button>
+      </div>
+    `).join("");
   }
 
-  // 이전달
-  prevMonth.addEventListener("click", function () {
+  if (prevMonth) {
+    prevMonth.addEventListener("click", function () {
+      currentMonth--;
 
-    currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
 
-    if (currentMonth < 0) {
-      currentMonth = 11;
-      currentYear--;
-    }
+      if (vCalender) {
+        vCalender.classList.remove("active");
+      }
 
-    vCalender.classList.remove("active");
+      renderCalendar(currentYear, currentMonth);
+    });
+  }
 
-    renderCalendar(currentYear, currentMonth);
-  });
+  if (nextMonth) {
+    nextMonth.addEventListener("click", function () {
+      currentMonth++;
 
-  // 다음달
-  nextMonth.addEventListener("click", function () {
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
 
-    currentMonth++;
+      if (vCalender) {
+        vCalender.classList.remove("active");
+      }
 
-    if (currentMonth > 11) {
-      currentMonth = 0;
-      currentYear++;
-    }
+      renderCalendar(currentYear, currentMonth);
+    });
+  }
 
-    vCalender.classList.remove("active");
+  if (scheduleContent) {
+    scheduleContent.addEventListener("click", function (e) {
+      const btn = e.target.closest(".apply-btn");
+      if (!btn) return;
 
-    renderCalendar(currentYear, currentMonth);
-  });
+      if (modalDate) {
+        modalDate.textContent = btn.dataset.date + " / " + btn.dataset.time;
+      }
 
-  // 신청하기 버튼 클릭
-  document.addEventListener("click", function (e) {
-  if (!e.target.classList.contains("apply-btn")) return;
+      if (modalTitle) {
+        modalTitle.textContent = btn.dataset.title;
+      }
 
-  modalDate.textContent = e.target.dataset.date + " / " + e.target.dataset.time;
-  modalTitle.textContent = e.target.dataset.title;
+      if (applyDate) applyDate.value = btn.dataset.date;
+      if (applyTitle) applyTitle.value = btn.dataset.title;
+      if (applyTime) applyTime.value = btn.dataset.time;
 
-  applyDate.value = e.target.dataset.date;
-  applyTitle.value = e.target.dataset.title;
-  applyTime.value = e.target.dataset.time;
+      if (applyModal) {
+        applyModal.classList.add("show");
+      }
+    });
+  }
 
-  applyModal.classList.add("show");
-});
+  if (volunteerApplyForm) {
+    volunteerApplyForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
+      const data = {
+        apply_date: applyDate?.value,
+        apply_title: applyTitle?.value,
+        apply_time: applyTime?.value,
+        name: applicantName?.value,
+        phone: applicantPhone?.value
+      };
 
-if (volunteerApplyForm) {
-  volunteerApplyForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    alert("봉사활동 신청이 완료되었습니다.");
-    volunteerApplyForm.reset();
-    applyModal.classList.remove("show");
-  });
-}
+      const { error } = await supabaseClient
+        .from("volunteer_applications")
+        .insert([data]);
 
-    // 모달 닫기
-    if (closeModal) {
-      closeModal.addEventListener("click", function () {
+      if (error) {
+        alert("봉사활동 신청 저장 중 오류가 발생했습니다.");
+        console.error(error);
+        return;
+      }
+
+      alert("봉사활동 신청이 완료되었습니다.");
+      volunteerApplyForm.reset();
+
+      if (applyModal) {
         applyModal.classList.remove("show");
-      });
-    }
+      }
+    });
+  }
 
-    // 바깥영역 클릭
-    if (applyModal) {
-      applyModal.addEventListener("click", function (e) {
-        if (e.target === applyModal) {
-          applyModal.classList.remove("show");
-        }
-      });
-    }
+  if (closeModal && applyModal) {
+    closeModal.addEventListener("click", function () {
+      applyModal.classList.remove("show");
+    });
+  }
+
+  if (applyModal) {
+    applyModal.addEventListener("click", function (e) {
+      if (e.target === applyModal) {
+        applyModal.classList.remove("show");
+      }
+    });
+  }
 
   renderCalendar(currentYear, currentMonth);
 });
