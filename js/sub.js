@@ -1,10 +1,3 @@
-const SUPABASE_URL = "https://igkdirbivpzdnkyswelx.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlna2RpcmJpdnB6ZG5reXN3ZWx4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyMTAzNjAsImV4cCI6MjA5Njc4NjM2MH0.WhQ1nPE2rOrsuJLMYyBz7nlnPq3WBCaIcbAvxTbBprw";
-
-const supabaseClient = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
 //side tab
 function setSubMenuActive() {
   const currentPage = window.location.pathname.split("/").pop();
