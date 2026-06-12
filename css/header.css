@@ -228,7 +228,7 @@
   color:#4B86C5;
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 768px){
   #header{
     height:80px;
   }

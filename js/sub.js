@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 다음 glow 추가
     processItems[currentIndex].classList.add("active-glow");
 
-  }, 1800);
+  }, 700);
 });
 
 

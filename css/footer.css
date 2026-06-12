@@ -19,3 +19,14 @@
   font-size: 14px;
   line-height: 1.7;
 }
+
+@media screen and (max-width:375px){
+  .footer-inner{
+    flex-direction: column;
+    gap: 50px;
+  }
+  .footer-info p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+}

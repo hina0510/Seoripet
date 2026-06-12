@@ -113,6 +113,9 @@ ABOUT US - Hero Banner
 /* ==============================
 공통: 섹션 번호 + 타이틀
 ============================== */
+#about-content{
+  max-width: 1400px;
+}
 .about-section {
   margin-bottom: 40px;
   display: flex;
@@ -153,7 +156,7 @@ ABOUT US - Hero Banner
 }
 
 .about-title {
-  font-size: 38px;
+  font-size: 40px;
   font-weight: 700;
   color: #1F2A44;
   line-height: 1.3;
@@ -685,15 +688,14 @@ Brand Strategy
   text-align: right;
   margin-top: 8px;
 }
-
+.about-tab-only{display: none;}
 /* ==============================
 Responsive
 ============================== */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .about-hero {
     height: 320px;
   }
-
   .about-hero::before {
     background: linear-gradient(
       to right,
@@ -706,15 +708,19 @@ Responsive
   }
 
   .about-hero-inner {
+    max-width: 768px;
     padding: 0 28px;
   }
 
   .about-hero-text h1 {
     font-size: 28px;
   }
-
-  .about-title {
-    font-size: 30px;
+  #about-content{
+    max-width: 768px;
+  }
+  .cert-section-wrap .about-section {
+    width: 100%;
+    justify-content: flex-start;
   }
   .strategy-title {
     font-size: 28px;
@@ -750,12 +756,25 @@ Responsive
     font-size: 22px;
   }
 
-  .about-title {
-    font-size: 26px;
+  .cert-section-wrap {
+    flex-direction: column;
   }
+  .cert-wrap {
+    width: 100%;
+    padding: 32px 24px;
+    gap: 30px;
+  }
+  .cert-wrap p{padding: 0 60px;}
+  .about-tab-only{display: block;}
   .about-mob-only{display: none;}
 }
 @media screen and (max-width: 375px) {
+  #about-content{
+    max-width: 375px;
+  }
+  .about-title {
+    font-size: 28px;
+  }
   .strategy-values {
     flex-direction: column;
     gap: 24px;
@@ -776,13 +795,17 @@ Responsive
     flex-direction: column;
   }
   .cert-wrap {
+    width: 100%;
     flex-direction: column;
     padding: 32px 24px;
     gap: 30px;
   }
+  
+  .cert-wrap p{padding: 0 0;}
   .cert-section-wrap .about-section {
     width: 100%;
   }
+  .about-tab-only{display: none;}
 }
 /* ==============================
 about us 스크롤업
@@ -814,7 +837,7 @@ about us 스크롤업
 }
 
 .visit-page-title h2 {
-  font-size: 34px;
+  font-size: 40px;
   font-weight: 700;
   color: #1F2A44;
   margin-bottom: 14px;
@@ -1068,10 +1091,10 @@ about us 스크롤업
 /* ==============================
 Responsive - visit-us
 ============================== */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .visit-info {
     width: 280px;
-    padding: 28px;
+    padding: 20px;
   }
 
   .visit-card-top {
@@ -1081,6 +1104,9 @@ Responsive - visit-us
     width: 100%;
     border-right: none;
     border-bottom: 1px solid #E0DBD4;
+  }
+  .visit-branch-name {
+    font-size: 28px;
   }
   .visit-map-img {
     min-height: 220px;
@@ -1100,11 +1126,21 @@ Responsive - visit-us
     padding: 28px 24px;
     text-align: center;
     gap: 16px;
+    margin-bottom: 0px;
   }
   .visit-banner-deco {
     display: none;
   }
+  .visit-reserve-btn {
+    padding: 12px 20px;
+  }
 }
+@media screen and (max-width: 375px) {
+  .visit-page-title h2 {
+    font-size: 28px;
+  }
+}
+
 
 /* Adopt-dog */
 .adopt-main-banner{
@@ -1406,7 +1442,7 @@ Responsive - visit-us
 }
 
 /* 달력 아이콘 */
-.date-input::-webkit-calendar-picker-indicator{
+.date-input::-webkit-calender-picker-indicator{
   cursor:pointer;
   opacity:1;
 }
@@ -1416,7 +1452,7 @@ Responsive - visit-us
   color:#333;
 }
 /* responsive */
-@media screen and (max-width:1024px){
+@media screen and (max-width:768px){
   .adopt-tabs{
     gap:18px;
   }
@@ -1777,9 +1813,8 @@ process section
 }
 
 .process-title h2{
-  color:#9ED6C3;
-  font-size:42px;
-  font-weight:800;
+  font-size:40px;
+  font-weight:700;
 }
 
 /* =========================
@@ -1886,9 +1921,8 @@ icons
 }
 
 .process-detail-title h2 {
-  color: #9ED6C3;
-  font-size: 42px;
-  font-weight: 800;
+  font-size: 40px;
+  font-weight: 700;
 }
 
 /* bottom banner */
@@ -1955,16 +1989,13 @@ icons
   word-break: keep-all;
 }
 
-@media screen and (max-width:1024px){
+@media screen and (max-width:768px){
   .process-section{
     display: flex;
     flex-direction: column;
     justify-content:center;
     align-items: center;
     padding: 0 0 40px;
-  }
-  .process-title h2 {
-    font-size: 32px;
   }
 
   .process-icons{
@@ -2002,9 +2033,7 @@ icons
   .process-detail-title{
     margin-bottom: 40px;
   }
-  .process-detail-title h2 {
-    font-size: 32px;
-  }
+  
   .process-bottom-banner {
     padding: 40px 20px;
     margin-bottom: 0;
@@ -2019,11 +2048,6 @@ icons
     flex-direction: column;
     justify-content:center;
     align-items: center;
-  }
-  .process-bottom-icons {
-    max-width: 330px;
-    flex-wrap:wrap;
-    gap: 30px;
   }
 
   .adopt-hero {
@@ -2057,8 +2081,20 @@ icons
   }
 }
 @media screen and (max-width:375px){
+  .process-title h2 {
+    font-size: 28px;
+  }
+  .process-detail-title h2 {
+    font-size: 28px;
+  }
   .process-line{
     display:none;
+  }
+  
+  .process-bottom-icons {
+    max-width: 330px;
+    flex-wrap:wrap;
+    gap: 30px;
   }
 }
 /* Donate-info */
@@ -2612,8 +2648,6 @@ textarea {
   align-items:flex-end;
   justify-content:space-between;
   padding:30px 10px 0;
-  border-left:1px solid #eee;
-  border-bottom:1px solid #ddd;
 }
 
 .month{
@@ -2685,7 +2719,7 @@ textarea {
   width:var(--w);
 }
 /* responsive */
-@media screen and (max-width:1024px){
+@media screen and (max-width:768px){
   .donation-tabs{
     gap:12px;
   }
@@ -2795,7 +2829,6 @@ textarea {
   .donation-tabs{
     display: none;
   }
-
   /* panel */
   .donation-panels{
     display: flex;
@@ -2812,7 +2845,7 @@ textarea {
   }
 
   .donation-panel h3{
-    font-size:30px;
+    font-size:26px;
   }
 
   .donation-panel p{
@@ -2821,7 +2854,7 @@ textarea {
 
   /* progress */
   .donation-progress-info strong{
-    font-size:24px;
+    font-size:19px;
   }
 
   .donation-progress-info span{
@@ -2845,16 +2878,22 @@ textarea {
   .donate-submit-btn{
     margin: 0 0 0;
   }
+  .donation-form{
+    margin-top:0px;
+    padding:25px;
+    border-radius:28px;
+    background:#F6F1E6;
+  }
   .donation-form-wrap.open{
     max-height:1050px;
   }
 
   .donation-form h3{
-    font-size:18px;
+    font-size:20px;
   }
 
   .donation-form > p{
-    font-size: 11px;
+    font-size: 15px;
   }
 
   .form-row label{
@@ -2870,6 +2909,9 @@ textarea {
 
   .amount-list span{
     height:52px;
+  }
+  .use-list{
+    gap:15px;
   }
   .use-list li{
     display: flex;
@@ -2993,11 +3035,11 @@ textarea {
 .volunteer-section {
   width: 100%;
   padding: 70px 20px 0;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .volunteer-section h2 {
-  font-size: 34px;
+  font-size: 40px;
   margin-bottom: 10px;
 }
 
@@ -3006,7 +3048,7 @@ textarea {
   margin-bottom: 40px;
 }
 
-.calendar-wrap {
+.calender-wrap {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -3017,7 +3059,7 @@ textarea {
 }
 
 /* 처음 상태: 달력 크게 중앙 */
-.calendar-box {
+.calender-box {
   width: 100%;
   background: #fff;
   border-radius: 24px;
@@ -3045,9 +3087,9 @@ textarea {
   text-align: left;
   transition: all 0.6s ease;
 }
-.volunteer-calender.active .calendar-box {
+.volunteer-calender.active .calender-box {
   width: 100%;
-  padding: 36px;
+  padding: 48px;
 }
 /* 클릭 후 일정 박스 등장 */
 .volunteer-calender.active .schedule-box {
@@ -3058,17 +3100,17 @@ textarea {
   transform: translateX(0);
 }
 
-.calendar-header {
+.calender-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.calendar-header h3 {
+.calender-header h3 {
   font-size: 30px;
 }
 
-.calendar-header button {
+.calender-header button {
   border: 0;
   background: none;
   font-size: 38px;
@@ -3484,13 +3526,18 @@ textarea {
 }
 
 /* Volunteer responsive */
-@media screen and (max-width: 1024px) {
-  .calendar-wrap{
+@media screen and (max-width: 768px) {
+  .volunteer-section h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .calender-wrap{
     display: flex;
     flex-direction: column;
   }
   .volunteer-calender{
     display: flex;
+    flex-direction: column;
   }
   .volunteer-calender.active {
     gap: 32px;
@@ -3508,7 +3555,7 @@ textarea {
     text-align: left;
     transition: all 0.6s ease;
   }
-  .volunteer-calender.active .calendar-box {
+  .volunteer-calender.active .calener-box {
     width: 100%;
     padding: 36px;
   }
@@ -3529,15 +3576,14 @@ textarea {
   .volunteer-section h2 {
     font-size: 24px;
   }
-  .volunteer-calender{
-    display: flex;
-    flex-direction: column;
-  }
-  .calendar-box {
+  .calender-box {
     padding: 14px;
   }
-
-  .calendar-header h3 {
+  .volunteer-calender.active .calender-box {
+    width: 100%;
+    padding: 14px;
+  }
+  .calender-header h3 {
     font-size: 20px;
   }
 
@@ -3801,7 +3847,7 @@ textarea {
   box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
-@media screen and (max-width:1024px){
+@media screen and (max-width:768px){
   .notice-grid{
     grid-template-columns:repeat(2,1fr);
   }

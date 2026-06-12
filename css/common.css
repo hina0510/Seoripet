@@ -169,12 +169,13 @@ body{
 }
 
 /* tablet */
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 768px){
   #sub-main{
     padding: 70px 20px 100px;
   }
 
   .sub-inner{
+    max-width: 768px;
     gap: 40px;
   }
 

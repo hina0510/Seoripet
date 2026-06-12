@@ -794,7 +794,7 @@ main{
   }
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 768px){
   #s1{padding-top: 80px;}
   .banner-track {
     display: flex;
@@ -803,7 +803,7 @@ main{
   }
   .banner-slide {
     width: 100%;
-    max-width: 1024px;
+    max-width: 768px;
     aspect-ratio: 160 / 78;
   }
   .banner-slide img{
@@ -826,7 +826,7 @@ main{
   .s2-title { font-size: 30px; }
   .s2-deco { width: 90px; bottom: -20px; right: -10px; }
   #s3{
-    padding:80px 0;
+    padding:30px 0;
     aspect-ratio: 4/2;
     background:url(../image/donate_cure1.png) no-repeat right center/cover;
   }
@@ -867,7 +867,10 @@ main{
     height:20px;
   }
   #s4 {
-    padding:80px 0;
+    padding:40px 0;
+  }
+  .tab-btns{
+    margin-bottom: 30px;
   }
   .tab-btn img{
     width: 80px;
@@ -914,9 +917,10 @@ main{
     width: 450px;
   }
   .reserve-card {
-    width: 360px;
+    width: 450px;
   }
   .bottom-inner {
+    flex-direction: column;
     gap: 50px;
   }
 }
@@ -929,7 +933,7 @@ main{
   }
   .banner-slide {
     width: 100%;
-    max-width: 1024px;
+    max-width: 768px;
     aspect-ratio: 160 / 78;
   }
   .banner-slide img{
