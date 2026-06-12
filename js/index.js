@@ -118,39 +118,79 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Modal
+// Modal
 const openModal = document.querySelector("#openModal");
 const closeModal = document.querySelector("#closeModal");
 const reserveModal = document.querySelector("#reserveModal");
 const reserveForm = document.querySelector("#reserveForm");
 const toastSuccess = document.querySelector("#toastSuccess");
+const modalClose = document.querySelector("#modalClose");
+
+function openReserveModal(e) {
+  e.preventDefault();
+
+  reserveModal.classList.add("active");
+  document.documentElement.classList.add("modal-open");
+}
+
+function closeReserveModal() {
+  reserveModal.classList.remove("active");
+  document.documentElement.classList.remove("modal-open");
+}
 
 if (openModal && reserveModal) {
-  openModal.addEventListener("click", () => {
-    reserveModal.classList.add("active");
-    document.body.style.overflow = "hidden";
-  });
+  openModal.addEventListener("click", openReserveModal);
+}
 
-  document.querySelector("#closeModal").addEventListener("click", () => {
-    reserveModal.classList.remove("active");
-    document.body.style.overflow = "";
-  });
+if (closeModal && reserveModal) {
+  closeModal.addEventListener("click", closeReserveModal);
+}
 
+if (reserveModal) {
   reserveModal.addEventListener("click", (e) => {
     if (e.target === reserveModal) {
-      reserveModal.classList.remove("active");
-      document.body.style.overflow = "";
+      closeReserveModal();
     }
   });
 }
 
 if (reserveForm && toastSuccess) {
-  reserveForm.addEventListener("submit", (e) => {
+  reserveForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    const textInputs = reserveForm.querySelectorAll('input[type="text"]');
+
+    const data = {
+      name: textInputs[0]?.value,
+      phone: reserveForm.querySelector('input[type="tel"]')?.value,
+      purpose: reserveForm.querySelector('input[name="purpose"]:checked')?.value,
+      breed: textInputs[1]?.value,
+      branch: textInputs[2]?.value,
+      message: reserveForm.querySelector("textarea")?.value,
+      visit_date: reserveForm.querySelector('input[type="date"]')?.value || null
+    };
+
+    const { error } = await supabaseClient
+      .from("visit_reservations")
+      .insert([data]);
+
+    if (error) {
+      alert("방문예약 저장 중 오류가 발생했습니다.");
+      console.error(error);
+      return;
+    }
+
     reserveModal.classList.remove("active");
-    document.body.style.overflow = "";
     toastSuccess.classList.add("show");
-    setTimeout(() => toastSuccess.classList.remove("show"), 3500);
+
     reserveForm.reset();
+  });
+}
+
+if (modalClose && toastSuccess) {
+  modalClose.addEventListener("click", () => {
+    toastSuccess.classList.remove("show");
+    document.documentElement.classList.remove("modal-open");
   });
 }
 

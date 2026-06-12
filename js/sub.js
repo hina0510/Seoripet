@@ -103,9 +103,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (visitToast) {
         visitToast.classList.add("show");
-        setTimeout(() => visitToast.classList.remove("show"), 3500);
-      } else {
-        alert("방문예약이 완료되었습니다.");
+      }
+      if (modalClose && visitToast) {
+        modalClose.addEventListener("click", function () {
+          visitToast.classList.remove("show");
+          document.body.style.overflow = "";
+
+          setTimeout(function () {
+            location.reload();
+          }, 300);
+        });
       }
 
       visitForm.reset();
@@ -154,49 +161,43 @@ document.addEventListener("DOMContentLoaded", function () {
   const applyBtns = document.querySelectorAll(".apply-btn");
   const adoptForm = document.querySelector(".adopt-form");
 
-  // 입양 모달이 없는 페이지면 실행 안 함
+  const adoptSuccessModal = document.getElementById("adoptSuccessModal");
+  const adoptSuccessClose = document.getElementById("adoptSuccessClose");
+
   if (!adoptModal) return;
 
-  // 신청 버튼
   applyBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
       adoptModal.classList.add("active");
-      document.body.style.overflow = "hidden";
+      document.documentElement.classList.add("modal-open");
     });
   });
 
-  // 닫기 버튼
   if (adoptCloseBtn) {
     adoptCloseBtn.addEventListener("click", function () {
       adoptModal.classList.remove("active");
-      document.body.style.overflow = "";
+      document.documentElement.classList.remove("modal-open");
     });
   }
 
-  // 배경 클릭 닫기
   adoptModal.addEventListener("click", function (e) {
     if (e.target === adoptModal) {
       adoptModal.classList.remove("active");
-      document.body.style.overflow = "";
+      document.documentElement.classList.remove("modal-open");
     }
   });
 
-  // 입양 신청 저장
   if (adoptForm) {
     adoptForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const textInputs = adoptForm.querySelectorAll('input[type="text"]');
-
-      const selectedType =
-        adoptForm.querySelector('input[name="adoptType"]:checked');
+      const selectedType = adoptForm.querySelector('input[name="adoptType"]:checked');
 
       const data = {
         name: textInputs[0]?.value,
         phone: adoptForm.querySelector('input[type="tel"]')?.value,
-        adopt_type: selectedType
-          ? selectedType.parentElement.textContent.trim()
-          : null,
+        adopt_type: selectedType?.value,
         breed: textInputs[1]?.value,
         branch: textInputs[2]?.value,
         message: adoptForm.querySelector("textarea")?.value,
@@ -213,12 +214,29 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      alert("입양/임시보호 신청이 완료되었습니다.");
+      adoptModal.classList.remove("active");
+
+      if (adoptSuccessModal) {
+        adoptSuccessModal.classList.add("show");
+      }
 
       adoptForm.reset();
+    });
+  }
 
-      adoptModal.classList.remove("active");
-      document.body.style.overflow = "";
+  if (adoptSuccessClose && adoptSuccessModal) {
+    adoptSuccessClose.addEventListener("click", function () {
+      adoptSuccessModal.classList.remove("show");
+      document.documentElement.classList.remove("modal-open");
+    });
+  }
+
+  if (adoptSuccessModal) {
+    adoptSuccessModal.addEventListener("click", function (e) {
+      if (e.target === adoptSuccessModal) {
+        adoptSuccessModal.classList.remove("show");
+        document.documentElement.classList.remove("modal-open");
+      }
     });
   }
 });
@@ -567,6 +585,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const applicantName = document.getElementById("applicantName");
   const applicantPhone = document.getElementById("applicantPhone");
 
+  const volunteerSuccessModal = document.getElementById("volunteerSuccessModal");
+  const volunteerSuccessClose = document.getElementById("volunteerSuccessClose");
+
   if (!datesEl) return;
 
   let currentYear = 2026;
@@ -696,7 +717,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <button
           type="button"
-          class="apply-btn"
+          class="volunteer-apply-btn"
           data-date="${dateKey}"
           data-title="${item.title}"
           data-time="${item.time}"
@@ -743,7 +764,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (scheduleContent) {
     scheduleContent.addEventListener("click", function (e) {
-      const btn = e.target.closest(".apply-btn");
+      const btn = e.target.closest(".volunteer-apply-btn");
       if (!btn) return;
 
       if (modalDate) {
@@ -786,11 +807,14 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      alert("봉사활동 신청이 완료되었습니다.");
       volunteerApplyForm.reset();
 
       if (applyModal) {
         applyModal.classList.remove("show");
+      }
+
+      if (volunteerSuccessModal) {
+        volunteerSuccessModal.classList.add("show");
       }
     });
   }
@@ -805,6 +829,20 @@ document.addEventListener("DOMContentLoaded", function () {
     applyModal.addEventListener("click", function (e) {
       if (e.target === applyModal) {
         applyModal.classList.remove("show");
+      }
+    });
+  }
+
+  if (volunteerSuccessClose && volunteerSuccessModal) {
+    volunteerSuccessClose.addEventListener("click", function () {
+      volunteerSuccessModal.classList.remove("show");
+    });
+  }
+
+  if (volunteerSuccessModal) {
+    volunteerSuccessModal.addEventListener("click", function (e) {
+      if (e.target === volunteerSuccessModal) {
+        volunteerSuccessModal.classList.remove("show");
       }
     });
   }
