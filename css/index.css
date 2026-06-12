@@ -952,7 +952,7 @@ main{
     gap: 50px;
   }
 }
-@media screen and (max-width: 375px){
+@media screen and (max-width: 450px){
   #s1{padding-top: 70px;}
   .banner-track {
     display: flex;

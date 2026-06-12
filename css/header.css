@@ -246,7 +246,7 @@
     height: 60px;
   }
 }
-@media screen and (max-width: 375px){
+@media screen and (max-width: 450px){
   #header{
     height:50px;
   }

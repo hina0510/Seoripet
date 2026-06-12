@@ -16,9 +16,13 @@
   --line: #D9D0C5;
   --white: #FFFFFF;
 }
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
 
 html{scroll-behavior: smooth;}
-
 body{
   font-family: "Pretendard", sans-serif;
   line-height: 1.5;

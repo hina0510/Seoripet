@@ -20,7 +20,7 @@
   line-height: 1.7;
 }
 
-@media screen and (max-width:375px){
+@media screen and (max-width:450px){
   .footer-inner{
     flex-direction: column;
     gap: 50px;
