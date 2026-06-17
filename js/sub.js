@@ -1,3 +1,27 @@
+const gotoTop = document.querySelector(".goto-top a");
+const gotBottom = document.querySelector(".goto-bottom a");
+
+if (gotoTop) {
+  gotoTop.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    document.body.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+const footer = document.querySelector("footer");
+
+if (gotBottom && footer) {
+  gotBottom.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    footer.scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+}
 //side tab
 function setSubMenuActive() {
   const currentPage = window.location.pathname.split("/").pop();
@@ -398,6 +422,22 @@ document.addEventListener("DOMContentLoaded", function () {
       animateDonationBar(activePanel);
     }
   }, 100);
+  // 모바일: 각 후원 패널이 화면에 들어오면 bar 애니메이션 실행
+  if (window.innerWidth <= 450) {
+    const barObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateDonationBar(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.4
+    });
+
+    panels.forEach(function (panel) {
+      barObserver.observe(panel);
+    });
+  }
 
   document.addEventListener("click", function (e) {
     const btn = e.target.closest(".open-form-btn");
@@ -527,6 +567,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
 
 /* Imfact-report */
 document.addEventListener("DOMContentLoaded", function () {

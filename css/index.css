@@ -608,7 +608,7 @@ main{
   width: 100%;
   max-width: 660px;
   max-height: 90vh;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   padding: 48px 44px;
   background: #fff;
   border-radius: 28px;
@@ -953,7 +953,7 @@ main{
   }
 }
 @media screen and (max-width: 450px){
-  #s1{padding-top: 70px;}
+  #s1{padding-top: 50px;}
   .banner-track {
     display: flex;
     width: 300%;

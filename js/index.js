@@ -1,3 +1,27 @@
+const gotoTop = document.querySelector(".goto-top a");
+const gotBottom = document.querySelector(".goto-bottom a");
+
+if (gotoTop) {
+  gotoTop.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    document.body.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+const footer = document.querySelector("footer");
+
+if (gotBottom && footer) {
+  gotBottom.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    footer.scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+}
 // Main Banner
 const banner = document.querySelector("#s1");
 const track = document.querySelector(".banner-track");
@@ -6,46 +30,81 @@ const dots = document.querySelectorAll(".banner-indicator button");
 if (banner && track && dots.length > 0) {
   let currentIndex = 0;
   let isAnimating = false;
+  const maxIndex = dots.length - 1;
 
-  function updateBanner(index){
+  function updateBanner(index) {
     currentIndex = index;
-    track.style.transform = `translateX(-${currentIndex * 100}vw)`;
+    const bannerWidth = banner.offsetWidth;
+    track.style.transform = `translateX(-${currentIndex * bannerWidth}px)`;
 
     dots.forEach(dot => dot.classList.remove("active"));
     dots[currentIndex].classList.add("active");
   }
 
-  function wheelLock(){
+  function wheelLock() {
     isAnimating = true;
+
     setTimeout(() => {
       isAnimating = false;
     }, 800);
   }
 
+  function startAutoPlay() {
+    return setInterval(() => {
+      const nextIndex =
+        currentIndex >= maxIndex
+          ? 0
+          : currentIndex + 1;
+
+      updateBanner(nextIndex);
+    }, 4000); // 4초마다 변경
+  }
+
+  let autoPlay = startAutoPlay();
+
+  function resetAutoPlay() {
+    clearInterval(autoPlay);
+    autoPlay = startAutoPlay();
+  }
+
   banner.addEventListener("wheel", (e) => {
-    if(isAnimating) return;
+    if (isAnimating) return;
 
     const down = e.deltaY > 0;
     const up = e.deltaY < 0;
 
-    if(down && currentIndex < 2){
+    if (down && currentIndex < maxIndex) {
       e.preventDefault();
       updateBanner(currentIndex + 1);
       wheelLock();
+      resetAutoPlay();
     }
 
-    if(up && currentIndex > 0){
+    if (up && currentIndex > 0) {
       e.preventDefault();
       updateBanner(currentIndex - 1);
       wheelLock();
+      resetAutoPlay();
     }
-  }, { passive:false });
+  }, { passive: false });
 
   dots.forEach(dot => {
     dot.addEventListener("click", () => {
       const index = Number(dot.dataset.index);
+
       updateBanner(index);
+      resetAutoPlay();
     });
+  });
+
+  // 마우스 올리면 일시정지
+  banner.addEventListener("mouseenter", () => {
+    clearInterval(autoPlay);
+  });
+
+  // 마우스 나가면 다시 시작
+  banner.addEventListener("mouseleave", () => {
+    autoPlay = startAutoPlay();
   });
 }
 

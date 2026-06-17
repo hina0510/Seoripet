@@ -6,14 +6,10 @@
 }
 .footer-inner {
   width: 90%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
   display: flex;
   align-items: center;
-  gap: 100px;
-}
-.footer-logo img {
-  width: 140px;
 }
 .footer-info p {
   font-size: 14px;
@@ -21,10 +17,6 @@
 }
 
 @media screen and (max-width:450px){
-  .footer-inner{
-    flex-direction: column;
-    gap: 50px;
-  }
   .footer-info p {
     font-size: 12px;
     line-height: 1.7;
