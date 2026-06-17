@@ -1,27 +1,3 @@
-const gotoTop = document.querySelector(".goto-top a");
-const gotBottom = document.querySelector(".goto-bottom a");
-
-if (gotoTop) {
-  gotoTop.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    document.body.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
-}
-const footer = document.querySelector("footer");
-
-if (gotBottom && footer) {
-  gotBottom.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    footer.scrollIntoView({
-      behavior: "smooth"
-    });
-  });
-}
 // Main Banner
 const banner = document.querySelector("#s1");
 const track = document.querySelector(".banner-track");

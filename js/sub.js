@@ -1,27 +1,4 @@
-const gotoTop = document.querySelector(".goto-top a");
-const gotBottom = document.querySelector(".goto-bottom a");
 
-if (gotoTop) {
-  gotoTop.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    document.body.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
-}
-const footer = document.querySelector("footer");
-
-if (gotBottom && footer) {
-  gotBottom.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    footer.scrollIntoView({
-      behavior: "smooth"
-    });
-  });
-}
 //side tab
 function setSubMenuActive() {
   const currentPage = window.location.pathname.split("/").pop();
